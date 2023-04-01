@@ -1,0 +1,4 @@
+../user/user.c:20:6:task1	8	static
+../user/user.c:34:6:task2	8	static
+../user/user.c:58:6:init	24	static
+../user/user.c:72:6:loop	4	static

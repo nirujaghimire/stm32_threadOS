@@ -1,0 +1,4 @@
+user.c:20:6:task1	1
+user.c:34:6:task2	3
+user.c:58:6:init	1
+user.c:72:6:loop	1
