@@ -1,4 +1,6 @@
-../user/user.c:20:6:task1	8	static
-../user/user.c:34:6:task2	8	static
-../user/user.c:58:6:init	24	static
-../user/user.c:72:6:loop	4	static
+../user/user.c:21:6:printChar	16	static
+../user/user.c:25:6:printString	16	static
+../user/user.c:29:6:task1	8	static
+../user/user.c:43:6:task2	8	static
+../user/user.c:67:6:init	24	static
+../user/user.c:81:6:loop	4	static

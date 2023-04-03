@@ -9,6 +9,7 @@
 #include "stdarg.h"
 #include "main.h"
 #include "stdlib.h"
+#include "print.h"
 
 #define TASK_MAX_NUMBER 3
 
@@ -49,11 +50,10 @@ static uint32_t stack_tracker = 0;		// Track the stack size of all
 static Task task[TASK_MAX_NUMBER]={0};	// All the tasks
 static Task *current_task;				// Current task
 
-static volatile uint32_t global_ticks;			// Global ticks or counter
+static volatile uint32_t global_ticks;	// Global ticks or counter
 static uint8_t scheduler_started = 0;	// Scheduler started flag
 
-
-
+static char buff[1024];
 
 /********************LOCAL FUNCTIONS***************************/
 static int _isPSP(){
@@ -67,6 +67,8 @@ static int _isPSP(){
 }
 
 static void _console(ConsoleState state,const char* func_name, const char* msg,...){
+
+	return;
 	int8_t priority;
 	if(_isPSP()){
 		priority = current_task->priority;
@@ -83,10 +85,11 @@ static void _console(ConsoleState state,const char* func_name, const char* msg,.
 	}else{
 		printf("TASK|%s: ",func_name);
 	}
-	va_list args;
-	va_start(args, msg);
-	vprintf(msg, args);
-    va_end(args);
+
+	va_list l;
+	va_start(l,msg);
+	vprintf(msg,l);
+	va_end(l);
 
     if(_isPSP() && (priority!=-1))
     	current_task->priority = 0;
@@ -567,12 +570,12 @@ void task_printf(char* msg,...){
 		priority = current_task->priority;
 		current_task->priority = -1;
 	}
-
-	va_list args;
-	va_start(args, msg);
-	vprintf(msg, args);
-    va_end(args);
-
+	va_list l;
+	va_start(l,msg);
+	uint32_t len = vsprint(buff,msg,l);
+	va_end(l);
+	buff[len+1]='\0';
+	printString(buff, len);
     if(_isPSP() && (priority!=-1))
     	current_task->priority = 0;
 }
@@ -597,7 +600,8 @@ __attribute__((naked)) void task_return(uint8_t status){
  * @return			: TaskSemaphore
  */
 TaskSemaphore task_createSemaphore(TaskSemaphoreType type){
-	TaskSemaphore taskSemaphore = {.type = type};
+	TaskSemaphore taskSemaphore;
+	taskSemaphore.type = type;
 	return taskSemaphore;
 }
 

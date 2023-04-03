@@ -5,14 +5,20 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../user/conversion.c \
+../user/print.c \
 ../user/task.c \
 ../user/user.c 
 
 OBJS += \
+./user/conversion.o \
+./user/print.o \
 ./user/task.o \
 ./user/user.o 
 
 C_DEPS += \
+./user/conversion.d \
+./user/print.d \
 ./user/task.d \
 ./user/user.d 
 
@@ -24,7 +30,7 @@ user/%.o user/%.su user/%.cyclo: ../user/%.c user/subdir.mk
 clean: clean-user
 
 clean-user:
-	-$(RM) ./user/task.cyclo ./user/task.d ./user/task.o ./user/task.su ./user/user.cyclo ./user/user.d ./user/user.o ./user/user.su
+	-$(RM) ./user/conversion.cyclo ./user/conversion.d ./user/conversion.o ./user/conversion.su ./user/print.cyclo ./user/print.d ./user/print.o ./user/print.su ./user/task.cyclo ./user/task.d ./user/task.o ./user/task.su ./user/user.cyclo ./user/user.d ./user/user.o ./user/user.su
 
 .PHONY: clean-user
 

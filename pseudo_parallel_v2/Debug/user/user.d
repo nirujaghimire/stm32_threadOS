@@ -23,7 +23,7 @@ user/user.o: ../user/user.c ../user/user.h ../Core/Inc/main.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
  C:/Users/peter/OneDrive/Desktop/Github/stm32_pseudo_parallel/pseudo_parallel_v2/user/user.h \
- ../user/task.h
+ ../user/task.h ../user/print.h
 ../user/user.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
@@ -51,3 +51,4 @@ user/user.o: ../user/user.c ../user/user.h ../Core/Inc/main.h \
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:
 C:/Users/peter/OneDrive/Desktop/Github/stm32_pseudo_parallel/pseudo_parallel_v2/user/user.h:
 ../user/task.h:
+../user/print.h:
