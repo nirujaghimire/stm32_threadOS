@@ -2199,3 +2199,18 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2023-04-04 00:24:59.170
 !MESSAGE Won't launch debug session since we failed to locate the binary.
+!SESSION 2023-04-06 09:36:00.664 -----------------------------------------------
+eclipse.buildId=Version 1.12.0
+java.version=11.0.17
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2023-04-06 09:36:45.142
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2023-04-06 09:36:45.162
+!MESSAGE Log4j2 initialized with config file C:\Users\peter\OneDrive\Desktop\Github\stm32_pseudo_parallel\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2023-04-06 09:36:51.186
+!MESSAGE Started RMI Server, listening on port 41337
