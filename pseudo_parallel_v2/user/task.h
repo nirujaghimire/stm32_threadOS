@@ -9,6 +9,7 @@
 #define TASK_H_
 
 #include "stdint.h"
+#include "print.h"
 
 typedef enum{
 	TASK_SEMAPHORE_BINARY,		// Binary semaphore
@@ -17,7 +18,7 @@ typedef enum{
 
 typedef struct{
 	int8_t prevPriority;
-	volatile uint8_t take;
+	uint8_t take;
 	TaskSemaphoreType type;
 	struct Task *task;
 }TaskSemaphore;

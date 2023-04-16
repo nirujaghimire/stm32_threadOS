@@ -1,4 +1,6 @@
-user.c:20:6:task1	1
-user.c:34:6:task2	3
-user.c:58:6:init	1
-user.c:72:6:loop	1
+user.c:21:6:printChar	1
+user.c:25:6:printString	1
+user.c:29:6:task1	1
+user.c:43:6:task2	3
+user.c:67:6:init	1
+user.c:81:6:loop	1
