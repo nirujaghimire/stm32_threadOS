@@ -5,10 +5,20 @@
  *      Author: peter
  */
 
+/*
+ * TODO
+ * Solve issues:-
+ * ->Mutex semaphore is automatically changing to binary semaphore
+ * ->Stack Tracing
+ * ->Exception Handling
+ */
+
 #include "user.h"
 #include "main.h"
 
 #include "task.h"
+
+extern UART_HandleTypeDef huart1;
 
 /////////////////////////////MAIN///////////////////////////////
 uint32_t count1;
@@ -16,6 +26,13 @@ uint32_t count2;
 float fp = 0;
 
 TaskSemaphore semaphore;
+void printChar(char ch){
+	HAL_UART_Transmit(&huart1, (uint8_t*)&ch, 1, HAL_MAX_DELAY);
+}
+
+void printString(char*str,uint32_t len){
+	HAL_UART_Transmit(&huart1, (uint8_t*)str, len, HAL_MAX_DELAY);
+}
 
 void task1() {
 	task_printf("Task1 starting\n");
@@ -37,9 +54,9 @@ void task2() {
 	while (1) {
 		count2++;
 		fp = (float)count2/100.0f;
-		task_printf("I am task2 %d\n",count2);
+		task_printf("I am task2 %f\n",fp);
 
-
+		semaphore.type = TASK_SEMAPHORE_MUTEX;
 		if(count2==4)
 			task_takeSemaphore(&semaphore);
 //			task_restart(2);
@@ -56,7 +73,7 @@ void task2() {
 }
 
 void init() {
-	printf("Initiating....\n");
+//	printf("Initiating....\n");
 
 	semaphore = task_createSemaphore(TASK_SEMAPHORE_MUTEX);
 
@@ -66,10 +83,9 @@ void init() {
 
 	task_startScheduler();
 
-	printf("I am here\n");
+//	printf("I am here\n");
 }
 
 void loop() {
 
 }
-
