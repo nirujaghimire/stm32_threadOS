@@ -1,0 +1,3 @@
+SVC_test.c:10:13:printSVCNumber	2
+SVC_test.c:14:6:SVC_test_SVC	2
+SVC_test.c:47:6:SVC_test_run	1
