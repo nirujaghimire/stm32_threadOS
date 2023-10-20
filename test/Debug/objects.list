@@ -7,6 +7,8 @@
 "./Core/Src/sysmem.o"
 "./Core/Src/system_stm32f1xx.o"
 "./Core/Src/task_switching_with_SVC.o"
+"./Core/Src/task_switching_with_SVC_PendSV.o"
+"./Core/Src/task_switching_with_Systick_PendSV.o"
 "./Core/Src/user.o"
 "./Core/Startup/startup_stm32f103c8tx.o"
 "./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o"

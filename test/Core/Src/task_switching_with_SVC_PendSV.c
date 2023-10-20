@@ -114,10 +114,14 @@ static void task1() {
 
 
 //void SVC_Handler(void) {
+//	SCB->ICSR |= SCB_ICSR_PENDSVSET_Msk;
+//}
+//
+//void PendSV_Handler(void) {
 //	taskSwitching();
 //}
 
-void task_switching_with_SVC_run() {
+void task_switching_with_SVC_PendSV_run() {
 	addTask(0, task0);
 	addTask(1, task1);
 	startScheduler(0);

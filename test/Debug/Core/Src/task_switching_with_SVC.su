@@ -1,0 +1,6 @@
+../Core/Src/task_switching_with_SVC.c:15:13:addTask	24	static
+../Core/Src/task_switching_with_SVC.c:39:13:startScheduler	24	static,ignoring_inline_asm
+../Core/Src/task_switching_with_SVC.c:63:36:taskSwitching	0	static,ignoring_inline_asm
+../Core/Src/task_switching_with_SVC.c:97:13:task0	8	static,ignoring_inline_asm
+../Core/Src/task_switching_with_SVC.c:106:13:task1	8	static,ignoring_inline_asm
+../Core/Src/task_switching_with_SVC.c:120:6:task_switching_with_SVC_run	8	static

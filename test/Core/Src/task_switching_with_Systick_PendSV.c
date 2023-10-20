@@ -11,9 +11,15 @@
 
 static uint32_t stack[MAX_TASK_NO][SIZE];
 static uint32_t sp[MAX_TASK_NO];
+static uint32_t threadAction[MAX_TASK_NO];
+static void (*thread[MAX_TASK_NO]);
+
+typedef enum {
+	RUNNING = 0, TASK_DELETE, TASK_RESTART, TASK_BLOCK
+} ThreadAction;
 
 static void addTask(int index, void (*task)()) {
-	uint32_t *psp = (uint32_t*) &stack[index][SIZE - 1];
+	uint32_t *psp = (uint32_t*) &stack[index][SIZE];
 
 	// fill dummy stack frame
 	*(--psp) = 0x01000000u; // Dummy xPSR, just enable Thumb State bit;
@@ -34,6 +40,9 @@ static void addTask(int index, void (*task)()) {
 	*(--psp) = 0x05050505u; // Dummy R5
 	*(--psp) = 0x04040404u; // Dummy R4
 	sp[index] = (uint32_t) psp;
+
+	thread[index] = task;
+	threadAction[index] = RUNNING;
 }
 
 static void startScheduler(int index) {
@@ -54,9 +63,11 @@ static void startScheduler(int index) {
 			"MSR CONTROL, r0"
 	);
 
-	void (*task)() = (void (*))((uint32_t*)sp[0])[14];
+//	void (*task)() = (void (*)())((uint32_t*)sp[index])[14];
+	void (*task)() = (void (*)())(stack[index][SIZE - 2]);
 	task();
-	while(1);
+	while (1)
+		;
 }
 
 static int count = 0;
@@ -72,8 +83,22 @@ __attribute__((naked)) static void taskSwitching() {
 	// save current value of PSP
 	__asm volatile("MOV %0, R0":"=r"(sp[count]));
 
-	count += 1;
-	count %= MAX_TASK_NO;
+	while (1) {
+		count++;
+		count %= MAX_TASK_NO;
+		if (sp[count] == 0)
+			continue; //Empty
+
+		if (threadAction[count] == TASK_DELETE) {
+			sp[count] = 0;
+			continue;
+		} else if (threadAction[count] == TASK_RESTART){
+			addTask(count, thread[count]);
+		}else if (threadAction[count] == TASK_BLOCK) {
+			continue;
+		}
+		break;
+	}
 
 	/* Retrieve the context of next task */
 
@@ -83,7 +108,6 @@ __attribute__((naked)) static void taskSwitching() {
 	__asm volatile("LDMIA R0!, {R4-R11}");
 	// update PSP
 	__asm volatile("MSR PSP, R0");
-
 	__asm volatile("POP {LR}");
 	__asm volatile("BX LR");
 }
@@ -95,29 +119,78 @@ static int y = 0;
 static int b = 0;
 
 static void task0() {
+	x = 0;
+	a = 0;
 	while (1) {
 		x++;
-		HAL_Delay(100);
-		__asm volatile("SVC #0");
+		HAL_Delay(1000);
+		if(x==20)
+			__asm volatile("SVC 0x11");
 		a++;
 	}
 }
 
 static void task1() {
+	y = 0;
+	b = 0;
 	while (1) {
 		y++;
-		HAL_Delay(100);
-		__asm volatile("SVC #1");
+		if (y >= 10)
+			__asm volatile("SVC 0x21");
+		HAL_Delay(1000);
 		b++;
 	}
 }
 
+void SVC_Handler(void) {
+	uint32_t sp;
+	uint32_t pc;
+	uint8_t svc;
+	uint32_t lr;
 
-//void SVC_Handler(void) {
-//	taskSwitching();
-//}
+	//This function SP
+	__asm volatile("MRS R0, MSP");
+	__asm volatile("MOV %0, R0":"=r"(sp):);
 
-void task_switching_with_SVC_run() {
+	//SP before Prologue
+	sp += 16; //Reversing : sub sp, #16
+	sp += 8; // Reversing : push {r7, lr}
+	__asm volatile("MOV %0, LR":"=r"(lr):);
+
+	//Program counter of SVC call
+	if (lr == 0xfffffffd) { //process stack
+		__asm volatile("MRS R0, PSP");
+		__asm volatile("MOV %0, R0":"=r"(sp):);
+	}
+	pc = ((uint32_t*) sp)[6] - 2;
+
+	//SVC number
+	svc = ((uint16_t*) pc)[0];
+	uint8_t thread_no = svc & (0x0F);
+	uint8_t thread_action = ((svc >> 4) & (0x0F));
+	threadAction[thread_no] = thread_action;
+}
+
+uint32_t tick = 0;
+void SysTick_Handler(void) {
+	HAL_IncTick();
+	tick++;
+	//	if (tick % 1000 == 0)
+	SCB->ICSR |= SCB_ICSR_PENDSVSET_Msk;
+}
+
+void PendSV_Handler(void) {
+	//Reversing caller function prologue (PendSV_hanlder) : PUSH {R7, LR}
+	__asm volatile("POP {R7,LR}");
+
+	//Making this function as if __atribute__((naked))
+	__asm volatile("PUSH {LR}");
+	taskSwitching();
+	__asm volatile("POP {LR}");
+	__asm volatile("BX LR");
+}
+
+void task_switching_with_Systick_PendSV_run() {
 	addTask(0, task0);
 	addTask(1, task1);
 	startScheduler(0);

@@ -14,6 +14,8 @@ C_SRCS += \
 ../Core/Src/sysmem.c \
 ../Core/Src/system_stm32f1xx.c \
 ../Core/Src/task_switching_with_SVC.c \
+../Core/Src/task_switching_with_SVC_PendSV.c \
+../Core/Src/task_switching_with_Systick_PendSV.c \
 ../Core/Src/user.c 
 
 OBJS += \
@@ -26,6 +28,8 @@ OBJS += \
 ./Core/Src/sysmem.o \
 ./Core/Src/system_stm32f1xx.o \
 ./Core/Src/task_switching_with_SVC.o \
+./Core/Src/task_switching_with_SVC_PendSV.o \
+./Core/Src/task_switching_with_Systick_PendSV.o \
 ./Core/Src/user.o 
 
 C_DEPS += \
@@ -38,6 +42,8 @@ C_DEPS += \
 ./Core/Src/sysmem.d \
 ./Core/Src/system_stm32f1xx.d \
 ./Core/Src/task_switching_with_SVC.d \
+./Core/Src/task_switching_with_SVC_PendSV.d \
+./Core/Src/task_switching_with_Systick_PendSV.d \
 ./Core/Src/user.d 
 
 
@@ -48,7 +54,7 @@ Core/Src/%.o Core/Src/%.su Core/Src/%.cyclo: ../Core/Src/%.c Core/Src/subdir.mk
 clean: clean-Core-2f-Src
 
 clean-Core-2f-Src:
-	-$(RM) ./Core/Src/SVC_test.cyclo ./Core/Src/SVC_test.d ./Core/Src/SVC_test.o ./Core/Src/SVC_test.su ./Core/Src/function_call_in_process_stack.cyclo ./Core/Src/function_call_in_process_stack.d ./Core/Src/function_call_in_process_stack.o ./Core/Src/function_call_in_process_stack.su ./Core/Src/main.cyclo ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/main.su ./Core/Src/stm32f1xx_hal_msp.cyclo ./Core/Src/stm32f1xx_hal_msp.d ./Core/Src/stm32f1xx_hal_msp.o ./Core/Src/stm32f1xx_hal_msp.su ./Core/Src/stm32f1xx_it.cyclo ./Core/Src/stm32f1xx_it.d ./Core/Src/stm32f1xx_it.o ./Core/Src/stm32f1xx_it.su ./Core/Src/syscalls.cyclo ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.cyclo ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su ./Core/Src/system_stm32f1xx.cyclo ./Core/Src/system_stm32f1xx.d ./Core/Src/system_stm32f1xx.o ./Core/Src/system_stm32f1xx.su ./Core/Src/task_switching_with_SVC.cyclo ./Core/Src/task_switching_with_SVC.d ./Core/Src/task_switching_with_SVC.o ./Core/Src/task_switching_with_SVC.su ./Core/Src/user.cyclo ./Core/Src/user.d ./Core/Src/user.o ./Core/Src/user.su
+	-$(RM) ./Core/Src/SVC_test.cyclo ./Core/Src/SVC_test.d ./Core/Src/SVC_test.o ./Core/Src/SVC_test.su ./Core/Src/function_call_in_process_stack.cyclo ./Core/Src/function_call_in_process_stack.d ./Core/Src/function_call_in_process_stack.o ./Core/Src/function_call_in_process_stack.su ./Core/Src/main.cyclo ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/main.su ./Core/Src/stm32f1xx_hal_msp.cyclo ./Core/Src/stm32f1xx_hal_msp.d ./Core/Src/stm32f1xx_hal_msp.o ./Core/Src/stm32f1xx_hal_msp.su ./Core/Src/stm32f1xx_it.cyclo ./Core/Src/stm32f1xx_it.d ./Core/Src/stm32f1xx_it.o ./Core/Src/stm32f1xx_it.su ./Core/Src/syscalls.cyclo ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.cyclo ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su ./Core/Src/system_stm32f1xx.cyclo ./Core/Src/system_stm32f1xx.d ./Core/Src/system_stm32f1xx.o ./Core/Src/system_stm32f1xx.su ./Core/Src/task_switching_with_SVC.cyclo ./Core/Src/task_switching_with_SVC.d ./Core/Src/task_switching_with_SVC.o ./Core/Src/task_switching_with_SVC.su ./Core/Src/task_switching_with_SVC_PendSV.cyclo ./Core/Src/task_switching_with_SVC_PendSV.d ./Core/Src/task_switching_with_SVC_PendSV.o ./Core/Src/task_switching_with_SVC_PendSV.su ./Core/Src/task_switching_with_Systick_PendSV.cyclo ./Core/Src/task_switching_with_Systick_PendSV.d ./Core/Src/task_switching_with_Systick_PendSV.o ./Core/Src/task_switching_with_Systick_PendSV.su ./Core/Src/user.cyclo ./Core/Src/user.d ./Core/Src/user.o ./Core/Src/user.su
 
 .PHONY: clean-Core-2f-Src
 
