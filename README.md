@@ -1,4 +1,4 @@
-# stm32 pseudo parallel  
+# stm32 threadOS
 →This is library which allow us to run multiple tasks in pseudo parallel in stm32  
 - Multiple Task can be add anytime with stack size
 - Each task can be:
