@@ -1,0 +1,9 @@
+../Core/Src/task_switching_with_Systick_PendSV.c:21:13:addTask	24	static
+../Core/Src/task_switching_with_Systick_PendSV.c:48:13:startScheduler	24	static,ignoring_inline_asm
+../Core/Src/task_switching_with_Systick_PendSV.c:74:36:taskSwitching	0	static,ignoring_inline_asm
+../Core/Src/task_switching_with_Systick_PendSV.c:121:13:task0	8	static,ignoring_inline_asm
+../Core/Src/task_switching_with_Systick_PendSV.c:133:13:task1	8	static,ignoring_inline_asm
+../Core/Src/task_switching_with_Systick_PendSV.c:145:6:SVC_Handler	24	static,ignoring_inline_asm
+../Core/Src/task_switching_with_Systick_PendSV.c:175:6:SysTick_Handler	8	static
+../Core/Src/task_switching_with_Systick_PendSV.c:182:6:PendSV_Handler	8	static,ignoring_inline_asm
+../Core/Src/task_switching_with_Systick_PendSV.c:193:6:task_switching_with_Systick_PendSV_run	8	static
