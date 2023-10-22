@@ -39,11 +39,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  17 .debug_line   000092d1  00000000  00000000  0002bffc  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000836c8  00000000  00000000  000352cd  2**0
+ 18 .debug_str    000836c1  00000000  00000000  000352cd  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000050  00000000  00000000  000b8995  2**0
+ 19 .comment      00000050  00000000  00000000  000b898e  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00002164  00000000  00000000  000b89e8  2**2
+ 20 .debug_frame  00002164  00000000  00000000  000b89e0  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -1335,25 +1335,25 @@ void SVC_Handler(void) {
  80007c0:	687b      	ldr	r3, [r7, #4]
  80007c2:	881b      	ldrh	r3, [r3, #0]
  80007c4:	70fb      	strb	r3, [r7, #3]
-	uint8_t thread_no = svc & (0x0F);
+	uint8_t thread_no = svc & (0x08);
  80007c6:	78fb      	ldrb	r3, [r7, #3]
- 80007c8:	f003 030f 	and.w	r3, r3, #15
+ 80007c8:	f003 0308 	and.w	r3, r3, #8
  80007cc:	70bb      	strb	r3, [r7, #2]
-	uint8_t thread_action = ((svc >> 4) & (0x0F));
- 80007ce:	78fb      	ldrb	r3, [r7, #3]
- 80007d0:	091b      	lsrs	r3, r3, #4
- 80007d2:	707b      	strb	r3, [r7, #1]
+	uint8_t thread_action = ((svc >> 8) & (0x08));
+ 80007ce:	2300      	movs	r3, #0
+ 80007d0:	707b      	strb	r3, [r7, #1]
 	threadAction[thread_no] = thread_action;
- 80007d4:	78bb      	ldrb	r3, [r7, #2]
- 80007d6:	787a      	ldrb	r2, [r7, #1]
- 80007d8:	4903      	ldr	r1, [pc, #12]	; (80007e8 <SVC_Handler+0x60>)
- 80007da:	f841 2023 	str.w	r2, [r1, r3, lsl #2]
+ 80007d2:	78bb      	ldrb	r3, [r7, #2]
+ 80007d4:	787a      	ldrb	r2, [r7, #1]
+ 80007d6:	4904      	ldr	r1, [pc, #16]	; (80007e8 <SVC_Handler+0x60>)
+ 80007d8:	f841 2023 	str.w	r2, [r1, r3, lsl #2]
 }
- 80007de:	bf00      	nop
- 80007e0:	3714      	adds	r7, #20
- 80007e2:	46bd      	mov	sp, r7
- 80007e4:	bc80      	pop	{r7}
- 80007e6:	4770      	bx	lr
+ 80007dc:	bf00      	nop
+ 80007de:	3714      	adds	r7, #20
+ 80007e0:	46bd      	mov	sp, r7
+ 80007e2:	bc80      	pop	{r7}
+ 80007e4:	4770      	bx	lr
+ 80007e6:	bf00      	nop
  80007e8:	200002e0 	.word	0x200002e0
 
 080007ec <SysTick_Handler>:

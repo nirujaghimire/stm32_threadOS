@@ -166,8 +166,8 @@ void SVC_Handler(void) {
 
 	//SVC number
 	svc = ((uint16_t*) pc)[0];
-	uint8_t thread_no = svc & (0x0F);
-	uint8_t thread_action = ((svc >> 4) & (0x0F));
+	uint8_t thread_no = svc & (0x08);
+	uint8_t thread_action = ((svc >> 8) & (0x08));
 	threadAction[thread_no] = thread_action;
 }
 
