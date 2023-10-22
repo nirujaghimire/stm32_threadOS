@@ -1,0 +1,6 @@
+task_switching_with_SVC_PendSV.c:15:13:addTask	1
+task_switching_with_SVC_PendSV.c:39:13:startScheduler	1
+task_switching_with_SVC_PendSV.c:63:36:taskSwitching	1
+task_switching_with_SVC_PendSV.c:97:13:task0	1
+task_switching_with_SVC_PendSV.c:106:13:task1	1
+task_switching_with_SVC_PendSV.c:124:6:task_switching_with_SVC_PendSV_run	1

@@ -1,0 +1,9 @@
+task_switching_with_Systick_PendSV.c:21:13:addTask	1
+task_switching_with_Systick_PendSV.c:48:13:startScheduler	1
+task_switching_with_Systick_PendSV.c:74:36:taskSwitching	5
+task_switching_with_Systick_PendSV.c:121:13:task0	2
+task_switching_with_Systick_PendSV.c:133:13:task1	2
+task_switching_with_Systick_PendSV.c:145:6:SVC_Handler	2
+task_switching_with_Systick_PendSV.c:175:6:SysTick_Handler	1
+task_switching_with_Systick_PendSV.c:182:6:PendSV_Handler	1
+task_switching_with_Systick_PendSV.c:193:6:task_switching_with_Systick_PendSV_run	1

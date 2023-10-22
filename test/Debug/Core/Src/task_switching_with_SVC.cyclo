@@ -1,0 +1,6 @@
+task_switching_with_SVC.c:15:13:addTask	1
+task_switching_with_SVC.c:39:13:startScheduler	1
+task_switching_with_SVC.c:63:36:taskSwitching	1
+task_switching_with_SVC.c:97:13:task0	1
+task_switching_with_SVC.c:106:13:task1	1
+task_switching_with_SVC.c:120:6:task_switching_with_SVC_run	1
