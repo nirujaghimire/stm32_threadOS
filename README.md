@@ -10,7 +10,7 @@ Features :
 - Thread delay which doesn’t consumes the clock
 - Thread Semaphore 
 - Thread Mutex lock and unlock
-```rb
+```c
 /*
  * user.c
  *
@@ -114,37 +114,60 @@ void run() {
 }
 ```
 #Outputs
-```rb
+```c
 Initiating....
-TASK|task_add> INFO : Handler 0x8002601 is added successfully with id 1.
-TASK|task_add> INFO : Handler 0x8002639 is added successfully with id 2.
-Task1 starting
-I am task1
-Task2 starting
-I am task2 0
-I am task1
-I am task1
-I am task2 1
-I am task1
-I am task1
-I am task2 2
-I am task1
-I am task1
-I am task2 3
-TASK|task_takeSemaphore> INFO : Handler 0x8002639 associated with id 2 took semaphore.
-I am task2 4
-I am task2 5
-I am task2 6
-I am task2 7
-TASK|task_giveSemaphore> INFO : Handler 0x8002639 associated with id 2 gave semaphore of handler 0x8002639.
-I am task1
-I am task1
-I am task2 8
-I am task1
-I am task1
-I am task2 9
-I am task1
-I am task1
-I am task2 10
-I am task1
+Task1 initiating...
+x = 1
+Task2 initiating...
+y = 1
+x = 2
+y = 2
+x = 3
+y = 3
+x = 4
+y = 4
+x = 5
+y = 5
+Task1 taking semaphore
+y = 6
+y = 7
+y = 8
+y = 9
+y = 10
+Task2 give semaphore
+y = 11
+x = 6
+y = 12
+x = 7
+y = 13
+x = 8
+y = 14
+x = 9
+y = 15
+x = 10
+Task1 is being deleted by task2 
+y = 16
+y = 17
+y = 18
+y = 19
+y = 20
+Task1 is being added by task2 
+y = 21
+Task1 initiating...
+x = 1
+y = 22
+x = 2
+y = 23
+x = 3
+y = 24
+x = 4
+y = 25
+x = 5
+y = 26
+Task1 taking semaphore
+y = 27
+y = 28
+y = 29
+y = 30
+y = 31
 ```
