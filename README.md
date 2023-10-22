@@ -1,14 +1,15 @@
 # stm32 threadOS
-→This is library which allow us to run multiple tasks in pseudo parallel in stm32  
-- Multiple Task can be add anytime with stack size
-- Each task can be:
+→This is library which allow us to run multiple threads in pseudo parallel in stm32  
+Features :
+- Multiple thread can be add anytime with stack size
+- Each thread can be:
     - Restart in any time. Self restart is also possible
     - Pause in any time
     - Resumed any time
     - Deleted in any time. Self delete is also possible
-- Task delay which doesn’t consumes the clock
-- Dynamic stack
-- Task Semaphore  
+- Thread delay which doesn’t consumes the clock
+- Thread Semaphore 
+- Thread Mutex lock and unlock
 ```rb
 /*
  * user.c
