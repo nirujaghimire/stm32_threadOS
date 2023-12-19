@@ -42,61 +42,122 @@ void SysTick_Handler(void) {
 }
 
 ///////////////////////////THREAD/////////////////////////
-#define STACK_SIZE 256
 
-int id1,id2;
-int x,y;
-int semaphore;
+//extern uint32_t stm32_thread_idle_count;
+//uint32_t stack1[256];
+//uint32_t stack2[128];
+//int semaphore;
+//int id1;
+//int id2;
+//static void task2() {
+//	int y = 0;
+//	printf("Task 2 initiating \n");
+//	while (1) {
+//		printf("Task 2 : %d :: %ld\n", y++, stm32_thread_idle_count);
+//		if(y == 10){
+////			StaticThread.giveBinarySemaphore(semaphore);
+//			StaticThread.unblock(id1);
+////			StaticThread.restart(id1);
+//		}
+//		StaticThread.delay(1000);
+//	}
+//}
+//static void task1() {
+//	int x = 0;
+//	printf("Task 1 initiating \n");
+//	while (1) {
+//		printf("Task 1 : %d :: %ld\n", x++, stm32_thread_idle_count);
+//		if(x == 5){
+////			StaticThread.takeBinarySemaphore(&semaphore);
+//			id2 = StaticThread.new(task2,stack2,sizeof(stack2) / 4);
+//			StaticThread.block(id1);
+//		}
+//		StaticThread.delay(1000);
+//	}
+//}
+//int id3;
+//uint32_t stack3[256];
+//static void task3(){
+//	StaticThread.mutexLock();
+//	for(int i=0;i<10;i++){
+//		printf("%d\n",i);
+//	}
+//	StaticThread.mutexUnlock();
+//	StaticThread.delete(id3);
+//}
 
-uint32_t stack1[STACK_SIZE];
-uint32_t stack2[STACK_SIZE];
 
 
 
-static void task1() {
-	StaticThread.print("Task1 initiating...\n");
-	x = 0;
-	while (1) {
-		x++;
-		StaticThread.print("x = %d\n", x);
-		StaticThread.delay(1000);
-		if(x==5){
-			StaticThread.print("Task1 taking semaphore\n");
-			StaticThread.takeBinarySemaphore(&semaphore);
-		}else if (x == 10){
-			StaticThread.print("Task1 restarting by itself\n");
-			StaticThread.restart(id1);
-		}
+
+
+
+void printOdd(int* arr, int len){
+	for(int i = 0; i<len; i++){
+//		if(arr[i]%2!=0)
+			printf("%d\n",arr[i]);
 	}
 }
 
-static void task2() {
-	StaticThread.print("Task2 initiating...\n");
-	y = 0;
-	while (1) {
-		y++;
-		StaticThread.print("y = %d\n", y);
-		StaticThread.delay(1000);
-		if(y==10){
-			StaticThread.print("Task2 give semaphore\n");
-			StaticThread.giveBinarySemaphore(semaphore);
-		}else if(y==15){
-			StaticThread.print("Task1 is being deleted by task2 \n");
-			StaticThread.delete(id1);
-		}else if(y==20){
-			StaticThread.print("Task1 is being added by task2 \n");
-			id1 = StaticThread.new(task1, stack1, sizeof(stack1) / sizeof(uint32_t));
-		}
+int *x_rr;
+int x_len;
+int x_id;
+void printX(){
+//	printOdd(x_rr, x_len);
+	for(int i = 0; i<x_len; i++){
+		StaticThread.print("x = %d\n",x_rr[i]);
+		HAL_Delay(10);
+	}
+	StaticThread.delete(x_id);
+}
+
+int *y_rr;
+int y_len;
+int y_id;
+void printY(){
+//	printOdd(y_rr, y_len);
+	for(int i = 0; i<y_len; i++){
+		StaticThread.print("y = %d\n",y_rr[i]);
+		HAL_Delay(10);
+	}
+	StaticThread.delete(y_id);
+}
+
+
+int idMain;
+uint32_t stackMain[1024];
+void taskMain(){
+	StaticThread.print("Initiating....\n");
+
+	int x[] = {1,2,3,4,5,6,7,8,9};
+	int y[] = {10,11,12,13,14,15,16,17,18};
+
+	uint32_t x_stack[256],y_stack[256];
+
+
+	x_rr = x;
+	x_len = sizeof(x)/sizeof(int);
+	x_id = StaticThread.new(printX,x_stack,sizeof(x_stack) / 4);
+
+
+	y_rr = y;
+	y_len = sizeof(y)/sizeof(int);
+	y_id = StaticThread.new(printY,y_stack,sizeof(y_stack) / 4);
+
+	while(1){
+
+
 
 	}
 }
 
 void run() {
-	printf("Initiating....\n");
-	HAL_Delay(3000);
+//	id1 = StaticThread.new(task1,stack1,sizeof(stack1) / 4);
+//	id2 = StaticThread.new(task2,stack2,sizeof(stack2) / 4);
+//	id3 = StaticThread.new(task3,stack3,sizeof(stack3) / 4);;
 
-	id1 = StaticThread.new(task1, stack1, sizeof(stack1) / sizeof(uint32_t));
-	id2 = StaticThread.new(task2, stack2, sizeof(stack2) / sizeof(uint32_t));
+	idMain = StaticThread.new(taskMain,stackMain,sizeof(stackMain) / 4);
 	StaticThread.startScheduler();
+
 }
 
