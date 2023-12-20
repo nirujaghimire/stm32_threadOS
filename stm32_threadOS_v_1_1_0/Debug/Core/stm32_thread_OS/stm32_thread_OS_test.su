@@ -1,0 +1,9 @@
+../Core/stm32_thread_OS/stm32_thread_OS_test.c:15:5:_write	24	static
+../Core/stm32_thread_OS/stm32_thread_OS_test.c:23:6:HardFault_Handler	8	static
+../Core/stm32_thread_OS/stm32_thread_OS_test.c:30:6:SVC_Handler	8	static
+../Core/stm32_thread_OS/stm32_thread_OS_test.c:34:6:PendSV_Handler	8	static
+../Core/stm32_thread_OS/stm32_thread_OS_test.c:38:6:SysTick_Handler	8	static
+../Core/stm32_thread_OS/stm32_thread_OS_test.c:52:13:calculatSum	32	static
+../Core/stm32_thread_OS/stm32_thread_OS_test.c:66:13:task1	88	static
+../Core/stm32_thread_OS/stm32_thread_OS_test.c:80:13:task2	32	static
+../Core/stm32_thread_OS/stm32_thread_OS_test.c:91:6:run	24	static
