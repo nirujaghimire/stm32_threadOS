@@ -66,7 +66,7 @@ uint32_t stack2[STACK_SIZE];
 
 
 
-static void task1() {
+static void task1(int argLen,void **args) {
 	StaticThread.print("Task1 initiating...\n");
 	x = 0;
 	while (1) {
@@ -83,7 +83,7 @@ static void task1() {
 	}
 }
 
-static void task2() {
+static void task2(int argLen,void **args) {
 	StaticThread.print("Task2 initiating...\n");
 	y = 0;
 	while (1) {
@@ -98,7 +98,7 @@ static void task2() {
 			StaticThread.delete(id1);
 		}else if(y==20){
 			StaticThread.print("Task1 is being added by task2 \n");
-			id1 = StaticThread.new(task1, stack1, sizeof(stack1) / sizeof(uint32_t));
+			id1 = StaticThread.new(task1, stack1, sizeof(stack1) / sizeof(uint32_t),0,NULL);
 		}
 
 	}
@@ -108,8 +108,8 @@ void run() {
 	printf("Initiating....\n");
 	HAL_Delay(3000);
 
-	id1 = StaticThread.new(task1, stack1, sizeof(stack1) / sizeof(uint32_t));
-	id2 = StaticThread.new(task2, stack2, sizeof(stack2) / sizeof(uint32_t));
+	id1 = StaticThread.new(task1, stack1, sizeof(stack1) / sizeof(uint32_t),0,NULL);
+	id2 = StaticThread.new(task2, stack2, sizeof(stack2) / sizeof(uint32_t),0,NULL);
 	StaticThread.startScheduler();
 }
 ```
