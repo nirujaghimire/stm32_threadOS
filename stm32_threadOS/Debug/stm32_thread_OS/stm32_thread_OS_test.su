@@ -3,8 +3,6 @@
 ../stm32_thread_OS/stm32_thread_OS_test.c:31:6:SVC_Handler	8	static
 ../stm32_thread_OS/stm32_thread_OS_test.c:35:6:PendSV_Handler	8	static
 ../stm32_thread_OS/stm32_thread_OS_test.c:39:6:SysTick_Handler	8	static
-../stm32_thread_OS/stm32_thread_OS_test.c:95:6:printOdd	24	static
-../stm32_thread_OS/stm32_thread_OS_test.c:105:6:printX	16	static
-../stm32_thread_OS/stm32_thread_OS_test.c:117:6:printY	16	static
-../stm32_thread_OS/stm32_thread_OS_test.c:129:6:taskMain	2136	static
-../stm32_thread_OS/stm32_thread_OS_test.c:154:6:run	8	static
+../stm32_thread_OS/stm32_thread_OS_test.c:56:13:task1	8	static
+../stm32_thread_OS/stm32_thread_OS_test.c:73:13:task2	8	static
+../stm32_thread_OS/stm32_thread_OS_test.c:94:6:run	8	static

@@ -29,7 +29,7 @@ typedef struct {
 
 static volatile STM32Thread thread[MAX_THREAD];
 static volatile int currentThread = -1;
-static volatile int countThread = 0;
+static volatile int countThread;
 static volatile uint8_t mutexLock = 0;
 
 static uint32_t idleThreadStack[64];

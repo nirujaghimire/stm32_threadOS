@@ -1,4 +1,0 @@
-../Core/Src/user.c:22:29:taskSwitch	0	static,ignoring_inline_asm
-../Core/Src/user.c:41:6:task1	8	static
-../Core/Src/user.c:50:6:task2	8	static
-../Core/Src/user.c:62:6:run	8	static,ignoring_inline_asm

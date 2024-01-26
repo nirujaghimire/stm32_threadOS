@@ -9,7 +9,6 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
-			<item value="C:\Users\NIRUJA\Desktop\Github\stm32_threadOS"/>
 			<item value="C:\Users\peter\OneDrive\Desktop\Github\stm32_threadOS"/>
 			<item value="C:\Users\peter\OneDrive\Desktop\Github\stm32_pseudo_parallel"/>
 		</list>
@@ -27,5 +26,9 @@
 			<item key="DIALOG_Y_ORIGIN" value="195"/>
 			<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
 		</section>
+	</section>
+	<section name="ChooseWorkspaceDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="531"/>
+		<item key="DIALOG_Y_ORIGIN" value="146"/>
 	</section>
 </section>
