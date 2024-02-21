@@ -13918,3 +13918,301 @@ arm-none-eabi-size  stm32_threadOS_v_1_1_1.elf
   14296	    180	   5532	  20008	   4e28	stm32_threadOS_v_1_1_1.elf
 Finished building: default.size.stdout
  
+11:47:27 **** Incremental Build of configuration Debug for project stm32_threadOS_v_1_1_1 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/stm32_thread_OS/stm32_thread_OS.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/stm32_thread_OS/stm32_thread_OS.d" -MT"Core/stm32_thread_OS/stm32_thread_OS.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/stm32_thread_OS/stm32_thread_OS.o"
+arm-none-eabi-gcc "../Core/stm32_thread_OS/stm32_thread_OS_test.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/stm32_thread_OS/stm32_thread_OS_test.d" -MT"Core/stm32_thread_OS/stm32_thread_OS_test.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/stm32_thread_OS/stm32_thread_OS_test.o"
+../Core/stm32_thread_OS/stm32_thread_OS.c:389:13: warning: 'spin' defined but not used [-Wunused-function]
+  389 | static void spin(){
+      |             ^~~~
+arm-none-eabi-gcc -o "stm32_threadOS_v_1_1_1.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Peter\Desktop\Github\stm32_threadOS\stm32_threadOS_v_1_1_1\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_threadOS_v_1_1_1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_threadOS_v_1_1_1.elf
+ 
+arm-none-eabi-size  stm32_threadOS_v_1_1_1.elf 
+arm-none-eabi-objdump -h -S stm32_threadOS_v_1_1_1.elf  > "stm32_threadOS_v_1_1_1.list"
+arm-none-eabi-objcopy  -O ihex stm32_threadOS_v_1_1_1.elf  "stm32_threadOS_v_1_1_1.hex"
+   text	   data	    bss	    dec	    hex	filename
+  14296	    184	   5528	  20008	   4e28	stm32_threadOS_v_1_1_1.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_threadOS_v_1_1_1.hex
+ 
+Finished building: stm32_threadOS_v_1_1_1.list
+ 
+11:47:54 **** Incremental Build of configuration Debug for project stm32_threadOS_v_1_1_1 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/stm32_thread_OS/stm32_thread_OS.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/stm32_thread_OS/stm32_thread_OS.d" -MT"Core/stm32_thread_OS/stm32_thread_OS.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/stm32_thread_OS/stm32_thread_OS.o"
+arm-none-eabi-gcc -o "stm32_threadOS_v_1_1_1.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Peter\Desktop\Github\stm32_threadOS\stm32_threadOS_v_1_1_1\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_threadOS_v_1_1_1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_threadOS_v_1_1_1.elf
+ 
+arm-none-eabi-size  stm32_threadOS_v_1_1_1.elf 
+arm-none-eabi-objdump -h -S stm32_threadOS_v_1_1_1.elf  > "stm32_threadOS_v_1_1_1.list"
+   text	   data	    bss	    dec	    hex	filename
+  14308	    184	   5528	  20020	   4e34	stm32_threadOS_v_1_1_1.elf
+arm-none-eabi-objcopy  -O ihex stm32_threadOS_v_1_1_1.elf  "stm32_threadOS_v_1_1_1.hex"
+Finished building: default.size.stdout
+ 
+Finished building: stm32_threadOS_v_1_1_1.hex
+ 
+Finished building: stm32_threadOS_v_1_1_1.list
+ 
+11:52:23 **** Incremental Build of configuration Debug for project stm32_threadOS_v_1_1_1 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/stm32_thread_OS/stm32_thread_OS_test.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/stm32_thread_OS/stm32_thread_OS_test.d" -MT"Core/stm32_thread_OS/stm32_thread_OS_test.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/stm32_thread_OS/stm32_thread_OS_test.o"
+../Core/stm32_thread_OS/stm32_thread_OS_test.c: In function 'task2':
+../Core/stm32_thread_OS/stm32_thread_OS_test.c:64:59: error: 'y' undeclared (first use in this function)
+   64 |                 StaticThread.print("%s : %d\n", __func__, y);
+      |                                                           ^
+../Core/stm32_thread_OS/stm32_thread_OS_test.c:64:59: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/stm32_thread_OS/subdir.mk:22: Core/stm32_thread_OS/stm32_thread_OS_test.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+11:54:32 **** Incremental Build of configuration Debug for project stm32_threadOS_v_1_1_1 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/stm32_thread_OS/stm32_thread_OS_test.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/stm32_thread_OS/stm32_thread_OS_test.d" -MT"Core/stm32_thread_OS/stm32_thread_OS_test.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/stm32_thread_OS/stm32_thread_OS_test.o"
+../Core/stm32_thread_OS/stm32_thread_OS_test.c:69:13: error: redefinition of 'task1'
+   69 | static void task1(int argLen, void **args) {
+      |             ^~~~~
+../Core/stm32_thread_OS/stm32_thread_OS_test.c:52:13: note: previous definition of 'task1' with type 'void(int,  void **)'
+   52 | static void task1(int argLen, void **args) {
+      |             ^~~~~
+../Core/stm32_thread_OS/stm32_thread_OS_test.c:52:13: warning: 'task1' defined but not used [-Wunused-function]
+make: *** [Core/stm32_thread_OS/subdir.mk:22: Core/stm32_thread_OS/stm32_thread_OS_test.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+11:55:58 **** Incremental Build of configuration Debug for project stm32_threadOS_v_1_1_1 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/stm32_thread_OS/stm32_thread_OS_test.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/stm32_thread_OS/stm32_thread_OS_test.d" -MT"Core/stm32_thread_OS/stm32_thread_OS_test.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/stm32_thread_OS/stm32_thread_OS_test.o"
+../Core/stm32_thread_OS/stm32_thread_OS_test.c:69:13: warning: 'monitoringTask' defined but not used [-Wunused-function]
+   69 | static void monitoringTask(int argLen, void **args) {
+      |             ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "stm32_threadOS_v_1_1_1.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Peter\Desktop\Github\stm32_threadOS\stm32_threadOS_v_1_1_1\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_threadOS_v_1_1_1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_threadOS_v_1_1_1.elf
+ 
+arm-none-eabi-size  stm32_threadOS_v_1_1_1.elf 
+arm-none-eabi-objdump -h -S stm32_threadOS_v_1_1_1.elf  > "stm32_threadOS_v_1_1_1.list"
+   text	   data	    bss	    dec	    hex	filename
+  13984	    184	   4512	  18680	   48f8	stm32_threadOS_v_1_1_1.elf
+arm-none-eabi-objcopy  -O ihex stm32_threadOS_v_1_1_1.elf  "stm32_threadOS_v_1_1_1.hex"
+Finished building: default.size.stdout
+ 
+Finished building: stm32_threadOS_v_1_1_1.hex
+ 
+Finished building: stm32_threadOS_v_1_1_1.list
+ 
+11:56:14 **** Incremental Build of configuration Debug for project stm32_threadOS_v_1_1_1 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/stm32_thread_OS/stm32_thread_OS_test.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/stm32_thread_OS/stm32_thread_OS_test.d" -MT"Core/stm32_thread_OS/stm32_thread_OS_test.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/stm32_thread_OS/stm32_thread_OS_test.o"
+../Core/stm32_thread_OS/stm32_thread_OS_test.c:69:13: warning: 'monitoringTask' defined but not used [-Wunused-function]
+   69 | static void monitoringTask(int argLen, void **args) {
+      |             ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "stm32_threadOS_v_1_1_1.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Peter\Desktop\Github\stm32_threadOS\stm32_threadOS_v_1_1_1\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_threadOS_v_1_1_1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_threadOS_v_1_1_1.elf
+ 
+arm-none-eabi-size  stm32_threadOS_v_1_1_1.elf 
+arm-none-eabi-objdump -h -S stm32_threadOS_v_1_1_1.elf  > "stm32_threadOS_v_1_1_1.list"
+   text	   data	    bss	    dec	    hex	filename
+  13980	    184	   4512	  18676	   48f4	stm32_threadOS_v_1_1_1.elf
+arm-none-eabi-objcopy  -O ihex stm32_threadOS_v_1_1_1.elf  "stm32_threadOS_v_1_1_1.hex"
+Finished building: default.size.stdout
+ 
+Finished building: stm32_threadOS_v_1_1_1.hex
+ 
+Finished building: stm32_threadOS_v_1_1_1.list
+ 
+11:57:14 **** Incremental Build of configuration Debug for project stm32_threadOS_v_1_1_1 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/stm32_thread_OS/stm32_thread_OS_test.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/stm32_thread_OS/stm32_thread_OS_test.d" -MT"Core/stm32_thread_OS/stm32_thread_OS_test.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/stm32_thread_OS/stm32_thread_OS_test.o"
+arm-none-eabi-gcc -o "stm32_threadOS_v_1_1_1.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Peter\Desktop\Github\stm32_threadOS\stm32_threadOS_v_1_1_1\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_threadOS_v_1_1_1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_threadOS_v_1_1_1.elf
+ 
+arm-none-eabi-size  stm32_threadOS_v_1_1_1.elf 
+arm-none-eabi-objdump -h -S stm32_threadOS_v_1_1_1.elf  > "stm32_threadOS_v_1_1_1.list"
+   text	   data	    bss	    dec	    hex	filename
+  14200	    184	   5536	  19920	   4dd0	stm32_threadOS_v_1_1_1.elf
+arm-none-eabi-objcopy  -O ihex stm32_threadOS_v_1_1_1.elf  "stm32_threadOS_v_1_1_1.hex"
+Finished building: default.size.stdout
+ 
+Finished building: stm32_threadOS_v_1_1_1.hex
+ 
+Finished building: stm32_threadOS_v_1_1_1.list
+ 
+11:59:01 **** Incremental Build of configuration Debug for project stm32_threadOS_v_1_1_1 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/stm32_thread_OS/stm32_thread_OS_test.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/stm32_thread_OS/stm32_thread_OS_test.d" -MT"Core/stm32_thread_OS/stm32_thread_OS_test.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/stm32_thread_OS/stm32_thread_OS_test.o"
+arm-none-eabi-gcc -o "stm32_threadOS_v_1_1_1.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Peter\Desktop\Github\stm32_threadOS\stm32_threadOS_v_1_1_1\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_threadOS_v_1_1_1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_threadOS_v_1_1_1.elf
+ 
+arm-none-eabi-size  stm32_threadOS_v_1_1_1.elf 
+arm-none-eabi-objdump -h -S stm32_threadOS_v_1_1_1.elf  > "stm32_threadOS_v_1_1_1.list"
+   text	   data	    bss	    dec	    hex	filename
+  14200	    184	   5536	  19920	   4dd0	stm32_threadOS_v_1_1_1.elf
+arm-none-eabi-objcopy  -O ihex stm32_threadOS_v_1_1_1.elf  "stm32_threadOS_v_1_1_1.hex"
+Finished building: default.size.stdout
+ 
+Finished building: stm32_threadOS_v_1_1_1.hex
+ 
+Finished building: stm32_threadOS_v_1_1_1.list
+ 
+11:59:53 **** Incremental Build of configuration Debug for project stm32_threadOS_v_1_1_1 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/stm32_thread_OS/stm32_thread_OS_test.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/stm32_thread_OS/stm32_thread_OS_test.d" -MT"Core/stm32_thread_OS/stm32_thread_OS_test.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/stm32_thread_OS/stm32_thread_OS_test.o"
+arm-none-eabi-gcc -o "stm32_threadOS_v_1_1_1.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Peter\Desktop\Github\stm32_threadOS\stm32_threadOS_v_1_1_1\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_threadOS_v_1_1_1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_threadOS_v_1_1_1.elf
+ 
+arm-none-eabi-size  stm32_threadOS_v_1_1_1.elf 
+arm-none-eabi-objdump -h -S stm32_threadOS_v_1_1_1.elf  > "stm32_threadOS_v_1_1_1.list"
+   text	   data	    bss	    dec	    hex	filename
+  14200	    184	   5536	  19920	   4dd0	stm32_threadOS_v_1_1_1.elf
+arm-none-eabi-objcopy  -O ihex stm32_threadOS_v_1_1_1.elf  "stm32_threadOS_v_1_1_1.hex"
+Finished building: default.size.stdout
+ 
+Finished building: stm32_threadOS_v_1_1_1.hex
+ 
+Finished building: stm32_threadOS_v_1_1_1.list
+ 
+12:01:46 **** Incremental Build of configuration Debug for project stm32_threadOS_v_1_1_1 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/stm32_thread_OS/stm32_thread_OS_test.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/stm32_thread_OS/stm32_thread_OS_test.d" -MT"Core/stm32_thread_OS/stm32_thread_OS_test.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/stm32_thread_OS/stm32_thread_OS_test.o"
+arm-none-eabi-gcc -o "stm32_threadOS_v_1_1_1.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Peter\Desktop\Github\stm32_threadOS\stm32_threadOS_v_1_1_1\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_threadOS_v_1_1_1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_threadOS_v_1_1_1.elf
+ 
+arm-none-eabi-size  stm32_threadOS_v_1_1_1.elf 
+arm-none-eabi-objdump -h -S stm32_threadOS_v_1_1_1.elf  > "stm32_threadOS_v_1_1_1.list"
+   text	   data	    bss	    dec	    hex	filename
+  14212	    184	   5536	  19932	   4ddc	stm32_threadOS_v_1_1_1.elf
+arm-none-eabi-objcopy  -O ihex stm32_threadOS_v_1_1_1.elf  "stm32_threadOS_v_1_1_1.hex"
+Finished building: default.size.stdout
+ 
+Finished building: stm32_threadOS_v_1_1_1.hex
+ 
+Finished building: stm32_threadOS_v_1_1_1.list
+ 
+12:04:45 **** Incremental Build of configuration Debug for project stm32_threadOS_v_1_1_1 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/stm32_thread_OS/stm32_thread_OS_test.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/stm32_thread_OS/stm32_thread_OS_test.d" -MT"Core/stm32_thread_OS/stm32_thread_OS_test.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/stm32_thread_OS/stm32_thread_OS_test.o"
+arm-none-eabi-gcc -o "stm32_threadOS_v_1_1_1.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Peter\Desktop\Github\stm32_threadOS\stm32_threadOS_v_1_1_1\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_threadOS_v_1_1_1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_threadOS_v_1_1_1.elf
+ 
+arm-none-eabi-size  stm32_threadOS_v_1_1_1.elf 
+arm-none-eabi-objdump -h -S stm32_threadOS_v_1_1_1.elf  > "stm32_threadOS_v_1_1_1.list"
+   text	   data	    bss	    dec	    hex	filename
+  14236	    184	   5536	  19956	   4df4	stm32_threadOS_v_1_1_1.elf
+arm-none-eabi-objcopy  -O ihex stm32_threadOS_v_1_1_1.elf  "stm32_threadOS_v_1_1_1.hex"
+Finished building: default.size.stdout
+ 
+Finished building: stm32_threadOS_v_1_1_1.hex
+ 
+Finished building: stm32_threadOS_v_1_1_1.list
+ 
+12:08:38 **** Incremental Build of configuration Debug for project stm32_threadOS_v_1_1_1 ****
+make -j12 all 
+arm-none-eabi-size  stm32_threadOS_v_1_1_1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14236	    184	   5536	  19956	   4df4	stm32_threadOS_v_1_1_1.elf
+Finished building: default.size.stdout
+ 
+12:09:06 **** Incremental Build of configuration Debug for project stm32_threadOS_v_1_1_1 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/stm32_thread_OS/stm32_thread_OS_test.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/stm32_thread_OS/stm32_thread_OS_test.d" -MT"Core/stm32_thread_OS/stm32_thread_OS_test.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/stm32_thread_OS/stm32_thread_OS_test.o"
+../Core/stm32_thread_OS/stm32_thread_OS_test.c:63:13: warning: 'task2' defined but not used [-Wunused-function]
+   63 | static void task2(int argLen, void **args) {
+      |             ^~~~~
+arm-none-eabi-gcc -o "stm32_threadOS_v_1_1_1.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Peter\Desktop\Github\stm32_threadOS\stm32_threadOS_v_1_1_1\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_threadOS_v_1_1_1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_threadOS_v_1_1_1.elf
+ 
+arm-none-eabi-size  stm32_threadOS_v_1_1_1.elf 
+arm-none-eabi-objdump -h -S stm32_threadOS_v_1_1_1.elf  > "stm32_threadOS_v_1_1_1.list"
+   text	   data	    bss	    dec	    hex	filename
+  14072	    184	   4512	  18768	   4950	stm32_threadOS_v_1_1_1.elf
+arm-none-eabi-objcopy  -O ihex stm32_threadOS_v_1_1_1.elf  "stm32_threadOS_v_1_1_1.hex"
+Finished building: default.size.stdout
+ 
+Finished building: stm32_threadOS_v_1_1_1.hex
+ 
+Finished building: stm32_threadOS_v_1_1_1.list
+ 
+12:10:50 **** Incremental Build of configuration Debug for project stm32_threadOS_v_1_1_1 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/stm32_thread_OS/stm32_thread_OS_test.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/stm32_thread_OS/stm32_thread_OS_test.d" -MT"Core/stm32_thread_OS/stm32_thread_OS_test.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/stm32_thread_OS/stm32_thread_OS_test.o"
+arm-none-eabi-gcc -o "stm32_threadOS_v_1_1_1.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Peter\Desktop\Github\stm32_threadOS\stm32_threadOS_v_1_1_1\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_threadOS_v_1_1_1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_threadOS_v_1_1_1.elf
+ 
+arm-none-eabi-size  stm32_threadOS_v_1_1_1.elf 
+arm-none-eabi-objdump -h -S stm32_threadOS_v_1_1_1.elf  > "stm32_threadOS_v_1_1_1.list"
+   text	   data	    bss	    dec	    hex	filename
+  14240	    184	   5536	  19960	   4df8	stm32_threadOS_v_1_1_1.elf
+arm-none-eabi-objcopy  -O ihex stm32_threadOS_v_1_1_1.elf  "stm32_threadOS_v_1_1_1.hex"
+Finished building: default.size.stdout
+ 
+Finished building: stm32_threadOS_v_1_1_1.hex
+ 
+Finished building: stm32_threadOS_v_1_1_1.list
+ 
+12:13:21 **** Incremental Build of configuration Debug for project stm32_threadOS_v_1_1_1 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/stm32_thread_OS/stm32_thread_OS_test.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/stm32_thread_OS/stm32_thread_OS_test.d" -MT"Core/stm32_thread_OS/stm32_thread_OS_test.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/stm32_thread_OS/stm32_thread_OS_test.o"
+arm-none-eabi-gcc -o "stm32_threadOS_v_1_1_1.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Peter\Desktop\Github\stm32_threadOS\stm32_threadOS_v_1_1_1\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_threadOS_v_1_1_1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_threadOS_v_1_1_1.elf
+ 
+arm-none-eabi-size  stm32_threadOS_v_1_1_1.elf 
+arm-none-eabi-objdump -h -S stm32_threadOS_v_1_1_1.elf  > "stm32_threadOS_v_1_1_1.list"
+   text	   data	    bss	    dec	    hex	filename
+  14264	    184	   5544	  19992	   4e18	stm32_threadOS_v_1_1_1.elf
+arm-none-eabi-objcopy  -O ihex stm32_threadOS_v_1_1_1.elf  "stm32_threadOS_v_1_1_1.hex"
+Finished building: default.size.stdout
+ 
+Finished building: stm32_threadOS_v_1_1_1.hex
+ 
+Finished building: stm32_threadOS_v_1_1_1.list
+ 
+12:14:20 **** Incremental Build of configuration Debug for project stm32_threadOS_v_1_1_1 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/stm32_thread_OS/stm32_thread_OS_test.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/stm32_thread_OS/stm32_thread_OS_test.d" -MT"Core/stm32_thread_OS/stm32_thread_OS_test.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/stm32_thread_OS/stm32_thread_OS_test.o"
+arm-none-eabi-gcc -o "stm32_threadOS_v_1_1_1.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Peter\Desktop\Github\stm32_threadOS\stm32_threadOS_v_1_1_1\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_threadOS_v_1_1_1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_threadOS_v_1_1_1.elf
+ 
+arm-none-eabi-size  stm32_threadOS_v_1_1_1.elf 
+arm-none-eabi-objdump -h -S stm32_threadOS_v_1_1_1.elf  > "stm32_threadOS_v_1_1_1.list"
+   text	   data	    bss	    dec	    hex	filename
+  14268	    184	   5544	  19996	   4e1c	stm32_threadOS_v_1_1_1.elf
+arm-none-eabi-objcopy  -O ihex stm32_threadOS_v_1_1_1.elf  "stm32_threadOS_v_1_1_1.hex"
+Finished building: default.size.stdout
+ 
+Finished building: stm32_threadOS_v_1_1_1.hex
+ 
+Finished building: stm32_threadOS_v_1_1_1.list
+ 
+12:15:23 **** Incremental Build of configuration Debug for project stm32_threadOS_v_1_1_1 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/stm32_thread_OS/stm32_thread_OS.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/stm32_thread_OS/stm32_thread_OS.d" -MT"Core/stm32_thread_OS/stm32_thread_OS.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/stm32_thread_OS/stm32_thread_OS.o"
+arm-none-eabi-gcc "../Core/stm32_thread_OS/stm32_thread_OS_test.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/stm32_thread_OS/stm32_thread_OS_test.d" -MT"Core/stm32_thread_OS/stm32_thread_OS_test.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/stm32_thread_OS/stm32_thread_OS_test.o"
+arm-none-eabi-gcc -o "stm32_threadOS_v_1_1_1.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Peter\Desktop\Github\stm32_threadOS\stm32_threadOS_v_1_1_1\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_threadOS_v_1_1_1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_threadOS_v_1_1_1.elf
+ 
+arm-none-eabi-size  stm32_threadOS_v_1_1_1.elf 
+arm-none-eabi-objdump -h -S stm32_threadOS_v_1_1_1.elf  > "stm32_threadOS_v_1_1_1.list"
+   text	   data	    bss	    dec	    hex	filename
+  14268	    184	   5544	  19996	   4e1c	stm32_threadOS_v_1_1_1.elf
+arm-none-eabi-objcopy  -O ihex stm32_threadOS_v_1_1_1.elf  "stm32_threadOS_v_1_1_1.hex"
+Finished building: default.size.stdout
+ 
+Finished building: stm32_threadOS_v_1_1_1.hex
+ 
+Finished building: stm32_threadOS_v_1_1_1.list
+ 
+12:16:39 **** Incremental Build of configuration Debug for project stm32_threadOS_v_1_1_1 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/stm32_thread_OS/stm32_thread_OS.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/stm32_thread_OS/stm32_thread_OS.d" -MT"Core/stm32_thread_OS/stm32_thread_OS.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/stm32_thread_OS/stm32_thread_OS.o"
+arm-none-eabi-gcc -o "stm32_threadOS_v_1_1_1.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Peter\Desktop\Github\stm32_threadOS\stm32_threadOS_v_1_1_1\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_threadOS_v_1_1_1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_threadOS_v_1_1_1.elf
+ 
+arm-none-eabi-size  stm32_threadOS_v_1_1_1.elf 
+arm-none-eabi-objdump -h -S stm32_threadOS_v_1_1_1.elf  > "stm32_threadOS_v_1_1_1.list"
+   text	   data	    bss	    dec	    hex	filename
+  14268	    184	   5544	  19996	   4e1c	stm32_threadOS_v_1_1_1.elf
+arm-none-eabi-objcopy  -O ihex stm32_threadOS_v_1_1_1.elf  "stm32_threadOS_v_1_1_1.hex"
+Finished building: default.size.stdout
+ 
+Finished building: stm32_threadOS_v_1_1_1.hex
+ 
+Finished building: stm32_threadOS_v_1_1_1.list
+ 

@@ -96,6 +96,11 @@ struct STM32ThreadControl{
 	 */
 	float (*utilization)();
 
+	/**
+	 * It is should be called during waiting in while loop
+	 */
+	void (*spin)();
+
 	//////////////////////HANDLER//////////////////////////
 	/**
 	 * This should be called in SVC_Handler

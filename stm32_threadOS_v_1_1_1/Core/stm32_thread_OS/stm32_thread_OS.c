@@ -147,6 +147,7 @@ static void startScheduler() {
 }
 
 static void threadSwitching() {
+	//Round Robin Heuristics
 	if (mutexLock)
 		return;
 	taskTime = HAL_GetTick()-taskTime;
@@ -383,6 +384,13 @@ static float utilization(){
 }
 
 
+/**
+ * It is should be called during waiting in while loop
+ */
+static void spin(){
+	reschedule();
+}
+
 struct STM32ThreadControl StaticThread = {
 		.new = new,
 		.startScheduler = startScheduler,
@@ -397,6 +405,7 @@ struct STM32ThreadControl StaticThread = {
 		.takeBinarySemaphore = threadTakeBinarySemaphore,
 		.giveBinarySemaphore = threadGiveBinarySemaphore,
 		.utilization = utilization,
+		.spin = spin,
 
 		.SVCHandler = threadSVCHandler,
 		.SysTickHandler = threadSysTickHandler,
