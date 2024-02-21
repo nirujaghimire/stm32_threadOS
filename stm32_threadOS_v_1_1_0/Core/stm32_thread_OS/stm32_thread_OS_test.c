@@ -4,6 +4,9 @@
  *  Created on: Oct 21, 2023
  *      Author: peter
  */
+//#define Thread_OS_test
+
+#ifdef Thread_OS_test
 
 #include "stm32_thread_OS.h"
 #include "main.h"
@@ -68,8 +71,7 @@ static void task1(int argLen, void **args) {
 	int sum = 0;
 	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 	void *parameters[3] = {(void*)10, arr, &sum};
-	StaticThread.new(calculatSum, stack3, sizeof(stack3) / sizeof(uint32_t), 3,
-			parameters);
+	StaticThread.new(calculatSum, stack3, sizeof(stack3) / sizeof(uint32_t), 3,parameters);
 
 	while (1) {
 		StaticThread.print("%s : %d\n", __func__, sum);
@@ -92,10 +94,9 @@ void run() {
 	printf("Initiating....\n");
 	HAL_Delay(3000);
 
-	id1 = StaticThread.new(task1, stack1, sizeof(stack1) / sizeof(uint32_t), 0,
-			NULL);
-	id2 = StaticThread.new(task2, stack2, sizeof(stack2) / sizeof(uint32_t), 0,
-			NULL);
+	id1 = StaticThread.new(task1, stack1, sizeof(stack1) / sizeof(uint32_t), 0,NULL);
+	id2 = StaticThread.new(task2, stack2, sizeof(stack2) / sizeof(uint32_t), 0,NULL);
 	StaticThread.startScheduler();
 }
 
+#endif

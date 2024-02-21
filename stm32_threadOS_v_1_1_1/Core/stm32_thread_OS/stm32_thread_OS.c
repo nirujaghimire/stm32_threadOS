@@ -34,7 +34,9 @@ static volatile STM32Thread thread[MAX_THREAD];
 static volatile int currentThread = -1;
 static volatile int countThread;
 static volatile uint8_t mutexLock = 0;
+static volatile uint8_t userMutexLock = 0;
 static volatile uint32_t taskTime = 0;
+
 
 static uint32_t idleThreadStack[64];
 uint32_t stm32_thread_idle_count;
@@ -148,8 +150,9 @@ static void startScheduler() {
 
 static void threadSwitching() {
 	//Round Robin Heuristics
-	if (mutexLock)
+	if (mutexLock || userMutexLock)
 		return;
+
 	taskTime = HAL_GetTick()-taskTime;
 	thread[currentThread].timeTillNow+=taskTime;
 
@@ -176,6 +179,7 @@ static void threadSwitching() {
 		countThread = 0;
 		break;
 	}
+
 	if (countThread > 0) {
 		//No thread remaining so assign idle
 		currentThread = 0;
@@ -246,6 +250,7 @@ void threadSVCHandler(){
  */
 static void threadDelete(int threadID) {
 	mutexLock = 1;
+
 	if(threadID==0)
 		threadID = currentThread;
 
@@ -313,6 +318,9 @@ static void threadDelay(uint32_t millis) {
 		thread[currentThread].waitTill = HAL_GetTick() + millis;
 	mutexLock = 0;
 	reschedule();
+	while(thread[currentThread].waitTill>HAL_GetTick()){
+
+	}
 }
 
 /**
@@ -331,14 +339,14 @@ static void threadPrint(const char *msg, ...) {
  * This blocks all thread except current thread (this thread)
  */
 static void threadMutexLock(){
-	mutexLock = 1;
+	userMutexLock = 1;
 }
 
 /**
  * This unlocks mutex lock
  */
 static void threadMutexUnlock(){
-	mutexLock = 0;
+	userMutexLock = 0;
 }
 
 
