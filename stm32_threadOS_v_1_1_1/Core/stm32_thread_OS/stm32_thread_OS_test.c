@@ -9,6 +9,7 @@
 #include "main.h"
 #include "stdio.h"
 #include "stdarg.h"
+#include "string.h"
 
 extern UART_HandleTypeDef huart1;
 
@@ -35,14 +36,14 @@ void PendSV_Handler(void) {
 	StaticThread.PendSVHandler();
 }
 
-int tick = 0;
+//int tick = 0;
 void SysTick_Handler(void) {
 	HAL_IncTick();
-	tick++;
-	if(tick==10){
+//	tick++;
+//	if(tick==10){
 		StaticThread.SysTickHandler();
-		tick= 0;
-	}
+//		tick= 0;
+//	}
 }
 
 ///////////////////////////THREAD/////////////////////////
@@ -55,11 +56,21 @@ uint32_t stack2[STACK_SIZE];
 uint32_t stack3[STACK_SIZE];
 
 volatile int count = 0;
+struct{
+	char name[8];
+	int price;
+}fruit;
+
+
+
 static void task1(int argLen, void **args) {
 	StaticThread.print("%s(INIT) : %d-%p\n", __func__, argLen, args);
 	while (1) {
 		StaticThread.mutexLock();
-		count++;
+		strcpy(fruit.name,"Apple\0");
+		StaticThread.delay(1000);
+		fruit.price = 10;
+		StaticThread.print("%s : %d\n",fruit.name,fruit.price);
 		StaticThread.mutexUnlock();
 		StaticThread.delay(10);
 	}
@@ -68,13 +79,13 @@ static void task1(int argLen, void **args) {
 static void task2(int argLen, void **args) {
 	StaticThread.print("%s(INIT) : %d-%p\n", __func__, argLen, args);
 	while (1) {
-		while (count % 10 != 0) {
-			StaticThread.spin();
-		}
-		StaticThread.print("Count : %d\n", count);
 		StaticThread.mutexLock();
-		count++;
+		strcpy(fruit.name,"Mango\0");
+		StaticThread.delay(1000);
+		fruit.price = 20;
+		StaticThread.print("%s : %d\n",fruit.name,fruit.price);
 		StaticThread.mutexUnlock();
+		StaticThread.delay(10);
 	}
 }
 
@@ -83,13 +94,14 @@ static void monitoringTask(int argLen, void **args) {
 	while (1) {
 		StaticThread.print("UF : %d\n",
 				(int) (100 * StaticThread.utilization()));
+		StaticThread.print("%s : %d\n",fruit.name,fruit.price);
 		StaticThread.delay(1000);
 	}
 }
 
 void run() {
 	printf("Initiating....\n");
-	HAL_Delay(3000);
+	HAL_Delay(1000);
 
 	id1 = StaticThread.new(task1, stack1, sizeof(stack1) / sizeof(uint32_t), 0,NULL);
 	id2 = StaticThread.new(task2, stack2, sizeof(stack2) / sizeof(uint32_t), 0,NULL);

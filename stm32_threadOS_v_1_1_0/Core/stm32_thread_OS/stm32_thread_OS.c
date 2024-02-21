@@ -111,7 +111,15 @@ static void startScheduler() {
 			sizeof(idleThreadStack) / sizeof(uint32_t),0,NULL);
 	NVIC_SetPriority(PendSV_IRQn, 0xFF);
 
-	uint32_t sp = thread[0].sp;
+	currentThread = 0;
+	for(int i=1;i<MAX_THREAD;i++){
+		if (thread[i].ID != 0){
+			currentThread = i;
+			break; // non empty thread found
+		}
+	}
+
+	uint32_t sp = thread[currentThread].sp;
 
 	__asm volatile("MOV R0, %0"::"r"(sp));
 	__asm volatile("MSR PSP, R0");
@@ -130,15 +138,14 @@ static void startScheduler() {
 			"MSR CONTROL, r0"
 	);
 
-	currentThread = 0;
-	void (*task)(int argLen,void**args) = (void (*)(int argLen,void**args))((uint32_t*)sp)[14];
-	task(thread[0].argLen,thread[0].args);
+	void (*task)(int argLen,void**args) = (void (*)(int argLen,void**args))((uint32_t*)sp)[14];//??
+	task(thread[currentThread].argLen,thread[currentThread].args);
 }
 
 static void threadSwitching() {
 	if (mutexLock)
 		return;
-	for (countThread = 0; countThread <= MAX_THREAD; countThread++) {
+	for (countThread = 1; countThread < MAX_THREAD; countThread++) {
 		currentThread = (currentThread + 1) % MAX_THREAD;
 		if (thread[currentThread].ID == 0)
 			continue; //Empty or idle thread
@@ -149,19 +156,14 @@ static void threadSwitching() {
 		if (thread[currentThread].action == STM32_THREAD_ACTION_DELETE) {
 			thread[currentThread].ID = 0;
 			continue;
-		} else if (thread[currentThread].action
-				== STM32_THREAD_ACTION_RESTART) {
-			addThread(currentThread, thread[currentThread].threadFunc,
-					thread[currentThread].stack,
-					thread[currentThread].stackLen,thread[currentThread].argLen,thread[currentThread].args);
+		} else if (thread[currentThread].action== STM32_THREAD_ACTION_RESTART) {
+			addThread(currentThread, thread[currentThread].threadFunc,thread[currentThread].stack,thread[currentThread].stackLen,thread[currentThread].argLen,thread[currentThread].args);
 		} else if (thread[currentThread].action == STM32_THREAD_ACTION_BLOCK) {
 			continue;
 		}
-
-		countThread = 0;
 		break;
 	}
-	if (countThread > 0) {
+	if (countThread >= MAX_THREAD) {
 		//No thread remaining so assign idle
 		currentThread = 0;
 	}
@@ -236,9 +238,8 @@ static void threadDelete(int threadID) {
 	if (threadID > 0 && threadID<MAX_THREAD)
 		thread[threadID].action = STM32_THREAD_ACTION_DELETE;
 	mutexLock = 0;
-	if (threadID == 0 && threadID != currentThread)
-		return;
-	reschedule();
+	if (threadID == currentThread) //?? why not for both??
+		reschedule();
 }
 
 
@@ -254,9 +255,8 @@ static void threadRestart(int threadID) {
 	if (threadID > 0 && threadID<MAX_THREAD)
 		thread[threadID].action = STM32_THREAD_ACTION_RESTART;
 	mutexLock = 0;
-	if (threadID == 0 && threadID != currentThread)
-		return;
-	reschedule();
+	if (threadID == currentThread)
+		reschedule();
 }
 
 /**
@@ -271,13 +271,12 @@ static void threadBlock(int threadID) {
 	if (threadID > 0 && threadID<MAX_THREAD)
 		thread[threadID].action = STM32_THREAD_ACTION_BLOCK;
 	mutexLock = 0;
-	if (threadID == 0 && threadID != currentThread)
-		return;
-	reschedule();
+	if (threadID == currentThread)
+		reschedule();
 }
 
 /**
- * This unblocks this thread
+ * This unblocks given thread
  * @param threadID  : ID of thread to be unblocked
  */
 static void threadUnblock(int threadID) {

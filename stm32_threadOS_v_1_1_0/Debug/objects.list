@@ -5,6 +5,8 @@
 "./Core/Src/sysmem.o"
 "./Core/Src/system_stm32f1xx.o"
 "./Core/Startup/startup_stm32f103c8tx.o"
+"./Core/stm32_thread_OS/_comparison_task.o"
+"./Core/stm32_thread_OS/comparision_task.o"
 "./Core/stm32_thread_OS/stm32_thread_OS.o"
 "./Core/stm32_thread_OS/stm32_thread_OS_test.o"
 "./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o"
