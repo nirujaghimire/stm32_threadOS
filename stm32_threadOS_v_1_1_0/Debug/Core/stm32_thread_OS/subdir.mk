@@ -5,14 +5,20 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Core/stm32_thread_OS/_comparison_task.c \
+../Core/stm32_thread_OS/comparision_task.c \
 ../Core/stm32_thread_OS/stm32_thread_OS.c \
 ../Core/stm32_thread_OS/stm32_thread_OS_test.c 
 
 OBJS += \
+./Core/stm32_thread_OS/_comparison_task.o \
+./Core/stm32_thread_OS/comparision_task.o \
 ./Core/stm32_thread_OS/stm32_thread_OS.o \
 ./Core/stm32_thread_OS/stm32_thread_OS_test.o 
 
 C_DEPS += \
+./Core/stm32_thread_OS/_comparison_task.d \
+./Core/stm32_thread_OS/comparision_task.d \
 ./Core/stm32_thread_OS/stm32_thread_OS.d \
 ./Core/stm32_thread_OS/stm32_thread_OS_test.d 
 
@@ -24,7 +30,7 @@ Core/stm32_thread_OS/%.o Core/stm32_thread_OS/%.su Core/stm32_thread_OS/%.cyclo:
 clean: clean-Core-2f-stm32_thread_OS
 
 clean-Core-2f-stm32_thread_OS:
-	-$(RM) ./Core/stm32_thread_OS/stm32_thread_OS.cyclo ./Core/stm32_thread_OS/stm32_thread_OS.d ./Core/stm32_thread_OS/stm32_thread_OS.o ./Core/stm32_thread_OS/stm32_thread_OS.su ./Core/stm32_thread_OS/stm32_thread_OS_test.cyclo ./Core/stm32_thread_OS/stm32_thread_OS_test.d ./Core/stm32_thread_OS/stm32_thread_OS_test.o ./Core/stm32_thread_OS/stm32_thread_OS_test.su
+	-$(RM) ./Core/stm32_thread_OS/_comparison_task.cyclo ./Core/stm32_thread_OS/_comparison_task.d ./Core/stm32_thread_OS/_comparison_task.o ./Core/stm32_thread_OS/_comparison_task.su ./Core/stm32_thread_OS/comparision_task.cyclo ./Core/stm32_thread_OS/comparision_task.d ./Core/stm32_thread_OS/comparision_task.o ./Core/stm32_thread_OS/comparision_task.su ./Core/stm32_thread_OS/stm32_thread_OS.cyclo ./Core/stm32_thread_OS/stm32_thread_OS.d ./Core/stm32_thread_OS/stm32_thread_OS.o ./Core/stm32_thread_OS/stm32_thread_OS.su ./Core/stm32_thread_OS/stm32_thread_OS_test.cyclo ./Core/stm32_thread_OS/stm32_thread_OS_test.d ./Core/stm32_thread_OS/stm32_thread_OS_test.o ./Core/stm32_thread_OS/stm32_thread_OS_test.su
 
 .PHONY: clean-Core-2f-stm32_thread_OS
 

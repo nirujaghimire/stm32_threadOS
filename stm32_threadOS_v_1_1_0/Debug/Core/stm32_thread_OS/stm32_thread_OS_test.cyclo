@@ -1,9 +1,0 @@
-stm32_thread_OS_test.c:15:5:_write	1
-stm32_thread_OS_test.c:23:6:HardFault_Handler	1
-stm32_thread_OS_test.c:30:6:SVC_Handler	1
-stm32_thread_OS_test.c:34:6:PendSV_Handler	1
-stm32_thread_OS_test.c:38:6:SysTick_Handler	1
-stm32_thread_OS_test.c:52:13:calculatSum	2
-stm32_thread_OS_test.c:66:13:task1	1
-stm32_thread_OS_test.c:80:13:task2	1
-stm32_thread_OS_test.c:91:6:run	1
