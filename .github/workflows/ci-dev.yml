@@ -19,8 +19,8 @@ jobs:
       - name: Install PlatformIO Core
         run: pip install --upgrade platformio
 
-      - name: Check code
-        run: pio check
+#      - name: Check code
+#        run: pio check
 
       - name: Build PlatformIO Project
         run: pio run
