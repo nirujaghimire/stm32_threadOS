@@ -1,2 +1,0 @@
-../Core/Src/SVC_test.c:10:13:printSVCNumber	16	static
-../Core/Src/SVC_test.c:44:6:SVC_test_run	4	static,ignoring_inline_asm

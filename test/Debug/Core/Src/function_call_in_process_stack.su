@@ -1,9 +1,0 @@
-../Core/Src/function_call_in_process_stack.c:15:13:voidEmptyFunc	4	static
-../Core/Src/function_call_in_process_stack.c:30:13:voidFunc	16	static
-../Core/Src/function_call_in_process_stack.c:73:13:voidFuncWithCall	8	static
-../Core/Src/function_call_in_process_stack.c:91:13:voidEmptyFuncWithArg	16	static
-../Core/Src/function_call_in_process_stack.c:110:37:nakedVoidEmptyFunc	0	static
-../Core/Src/function_call_in_process_stack.c:116:37:nakedVoidFunc	0	static
-../Core/Src/function_call_in_process_stack.c:123:37:nakedVoidFuncWithCall	0	static
-../Core/Src/function_call_in_process_stack.c:130:37:nakedVoidEmptyFuncWithArg	0	static
-../Core/Src/function_call_in_process_stack.c:136:6:funtion_call_in_process_stack_run	4	static

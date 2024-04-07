@@ -1,18 +1,3 @@
-# [stm32 pseudo parallel](https://nirujaghimire.super.site/stm32threados)
-→This is library which allow us to run multiple tasks in pseudo parallel in stm32  
-- Multiple Task can be added anytime with stack size
-- Each task can be:
-    - Restart in any time. Self restart is also possible
-    - Pause in any time. Self pause is also possible
-    - Resumed any time
-    - Deleted in any time. Self delete is also possible
-- Task delay which does not consume the clock
-- Dynamic stack
-- Task Semaphore 
-- Mutex Lock (It locks all other tasks)
-- Thread spin (It switches the task while waiting)
-- Track utilization
-```rb
 /*
  * stm32_thread_OS_test.c
  *
@@ -120,30 +105,4 @@ void run() {
     id3 = StaticThread.new(monitoringTask, stack3, sizeof(stack3) / sizeof(uint32_t), 0, NULL);
     StaticThread.startScheduler();
 }
-```
-# Outputs
-```rb
-Initiating....
-task1(INIT): 0-0
-Apple : 10
-task2(INIT): 0-0
-Mango : 20
-monitoringTsk(INIT) : -0
-UF : 100
-Mango : 20
-Apple : 10
-Mango : 20
-UF : 100
-Mago : 20
-Apple : 10
-Mango : 20
-UF : 100
-Mago : 20
-Apple : 10
-Mango : 20
-UF : 100
-Mago : 20
-Apple : 10
-Mango : 20
-UF : 100
-```
+
