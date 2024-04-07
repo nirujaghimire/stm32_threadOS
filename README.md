@@ -1,7 +1,7 @@
 # [stm32 pseudo parallel](https://nirujaghimire.super.site/stm32threados)
 →This is library which allow us to run multiple tasks in pseudo parallel in stm32  
 - Multiple Task can be added anytime with stack size
-- Each task can be:
+- Each task can be
     - Restart in any time. Self restart is also possible
     - Pause in any time. Self pause is also possible
     - Resumed any time
