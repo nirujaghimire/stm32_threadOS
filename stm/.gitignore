@@ -1,3 +1,4 @@
-*
-!Core
-!stm32_threadOS.ioc
+Drivers
+.cproject
+.mxproject
+.project
