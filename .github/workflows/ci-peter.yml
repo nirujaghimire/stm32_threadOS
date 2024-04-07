@@ -22,6 +22,4 @@ jobs:
         run: pio run
 
       - name: Save Binary
-        run: |
-          cp .pio/build/*/firmware.bin $GITHUB_WORKSPACE/firmware.bin
-          cp .pio/build/*/firmware.hex $GITHUB_WORKSPACE/firmware.hex
+        run: cp .pio/build/*/firmware.bin $GITHUB_WORKSPACE/firmware.bin
