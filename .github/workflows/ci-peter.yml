@@ -23,3 +23,9 @@ jobs:
 
       - name: Save Binary
         run: cp .pio/build/*/firmware.bin $GITHUB_WORKSPACE/firmware.bin
+
+      - name: Upload Binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: firmware
+          path: $GITHUB_WORKSPACE/firmware.bin
