@@ -21,4 +21,3 @@ jobs:
         id: release
         with:
           token: ${{ secrets.GH_KEY }}
-          release-type: go
