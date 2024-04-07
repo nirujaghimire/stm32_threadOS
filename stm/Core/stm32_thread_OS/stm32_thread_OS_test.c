@@ -97,7 +97,7 @@ _Noreturn static void monitoringTask(int argLen, void **args) {
 }
 
 void run() {
-    printf("Initiating....\n");
+    printf("Initiating...\n");
     HAL_Delay(1000);
 
     id1 = StaticThread.new(task1, stack1, sizeof(stack1) / sizeof(uint32_t), 0, NULL);
