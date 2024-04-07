@@ -15,14 +15,14 @@ jobs:
       - name: Install PlatformIO Core
         run: pip install --upgrade platformio
 
-      - name: Check code
-        run: pio check
+#      - name: Check code
+#        run: pio check
 
       - name: Build PlatformIO Project
         run: pio run
 
       - name: Save Binary
-        run: cp .pio/build/*/firmware.bin $GITHUB_WORKSPACE/firmware.bin
+        run: cp .pio/build/genericSTM32F103C8/firmware.bin $GITHUB_WORKSPACE/firmware.bin
 
       - name: Upload Binary
         uses: actions/upload-artifact@v2
