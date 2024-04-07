@@ -8,11 +8,7 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
-#        with:
-#          path: |
-#            ~/.cache/pip
-#            ~/.platformio/.cache
-#          key: ${{ runner.os }}-pio
+
       - uses: actions/setup-python@v4
         with:
           python-version: '3.12'
@@ -24,3 +20,8 @@ jobs:
 
       - name: Build PlatformIO Project
         run: pio run
+
+      - name: Save Binary
+        run: |
+          cp .pio/build/*/firmware.bin $GITHUB_WORKSPACE/firmware.bin
+          cp .pio/build/*/firmware.hex $GITHUB_WORKSPACE/firmware.hex
