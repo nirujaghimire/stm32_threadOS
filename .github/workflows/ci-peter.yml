@@ -1,6 +1,6 @@
 name: CI-peter-pipeline
 on:
-  pull_request:
+  push:
     branches: [ peter ]
 jobs:
   build:
