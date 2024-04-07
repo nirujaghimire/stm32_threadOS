@@ -1,9 +1,0 @@
-../Core/stm32_thread_OS/stm32_thread_OS_test.c:16:5:_write	24	static
-../Core/stm32_thread_OS/stm32_thread_OS_test.c:24:6:HardFault_Handler	8	static
-../Core/stm32_thread_OS/stm32_thread_OS_test.c:31:6:SVC_Handler	8	static
-../Core/stm32_thread_OS/stm32_thread_OS_test.c:35:6:PendSV_Handler	8	static
-../Core/stm32_thread_OS/stm32_thread_OS_test.c:40:6:SysTick_Handler	8	static
-../Core/stm32_thread_OS/stm32_thread_OS_test.c:66:13:task1	24	static
-../Core/stm32_thread_OS/stm32_thread_OS_test.c:79:13:task2	24	static
-../Core/stm32_thread_OS/stm32_thread_OS_test.c:92:13:monitoringTask	24	static
-../Core/stm32_thread_OS/stm32_thread_OS_test.c:102:6:run	24	static
