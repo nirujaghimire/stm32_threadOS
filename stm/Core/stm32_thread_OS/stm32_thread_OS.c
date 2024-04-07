@@ -1,8 +1,8 @@
 /*
- * threadOS.c
+ * stm32_thread_OS.c
  *
  *  Created on: Oct 21, 2023
- *      Author: peter
+ *      Author: Niruja
  */
 
 #include "stm32_thread_OS.h"

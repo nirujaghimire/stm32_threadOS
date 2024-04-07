@@ -1,8 +1,8 @@
 /*
- * threadOS.h
+ * stm32_thread_OS.h
  *
  *  Created on: Oct 21, 2023
- *      Author: peter
+ *      Author: Niruja
  */
 
 #ifndef STM32_THREAD_OS_THREADOS_H_
@@ -14,16 +14,16 @@
 
 
 struct STM32ThreadControl{
-	/**
-	 * This adds the thread
-	 * @param threadTask	: Infinite function for thread  (!!! should be infinite running)
-	 * @param stack			: Pointer to stack array
-	 * @param stackLen		: Length of stack array
-	 * @param argLen		: Length of arguments
-	 * @param args			: Pointer to arguments
-	 * @return				: ID of created thread (This ID is required for restart or delete of thread)
-	 * 						: -1 if MAX_THREAD limit exceeds
-	 */
+    /**
+     * This adds the thread
+     * @param threadTask	: Infinite function for thread  (!!! should be infinite running)
+     * @param stack			: Pointer to stack array
+     * @param stackLen		: Length of stack array
+     * @param argLen		: Length of arguments
+     * @param args			: Pointer to arguments
+     * @return				: ID of created thread (This ID is required for restart or delete of thread)
+     * 						: -1 if MAX_THREAD limit exceeds
+     */
 	int (*new)(void (*threadTask)(int argLen,void**args), uint32_t *stack, uint32_t stackLen,int argLen,void**args);
 
 	/**

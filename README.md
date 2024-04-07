@@ -1,122 +1,149 @@
-# stm32 pseudo parallel  
+# [stm32 pseudo parallel](https://nirujaghimire.super.site/stm32threados)
 →This is library which allow us to run multiple tasks in pseudo parallel in stm32  
-- Multiple Task can be add anytime with stack size
+- Multiple Task can be added anytime with stack size
 - Each task can be:
     - Restart in any time. Self restart is also possible
-    - Pause in any time
+    - Pause in any time. Self pause is also possible
     - Resumed any time
     - Deleted in any time. Self delete is also possible
-- Task delay which doesn’t consumes the clock
+- Task delay which does not consume the clock
 - Dynamic stack
-- Task Semaphore  
+- Task Semaphore 
+- Mutex Lock (It locks all other tasks)
+- Thread spin (It switches the task while waiting)
+- Track utilization
 ```rb
 /*
- * user.c
+ * stm32_thread_OS_test.c
  *
- *  Created on: Feb 21, 2023
- *      Author: peter
+ *  Created on: Oct 21, 2023
+ *      Author: Niruja
  */
 
-#include "user.h"
+#include "stm32_thread_OS.h"
 #include "main.h"
+#include "stdio.h"
+#include "string.h"
 
-#include "task.h"
+extern UART_HandleTypeDef huart1;
 
-/////////////////////////////MAIN///////////////////////////////
-uint32_t count1;
-uint32_t count2;
-float fp = 0;
-
-TaskSemaphore semaphore;
-
-void task1() {
-	task_printf("Task1 starting\n");
-	count1 = 0;
-	while (1) {
-		task_printf("I am task1\n");
-		count1++;
-//		if(count1==4)
-//			task_takeSemaphore(&semaphore);
-//			task_delete(1);
-
-		task_delay(500);
-	}
+int _write(int file, char *data, int len) {
+    StaticThread.mutexLock();
+    HAL_UART_Transmit(&huart1, (uint8_t *) data, len, HAL_MAX_DELAY);
+    StaticThread.mutexUnlock();
+    return len;
 }
 
-void task2() {
-	task_printf("Task2 starting\n");
-	count2 = 0;
-	while (1) {
-		task_printf("I am task2 %d\n",count2);
-		count2++;
-		fp = (float)count2/100.0f;
+///////////////////////////HANDLER///////////////////////
+void HardFault_Handler(void) {
+    printf("Hard Fault\n");
+    while (1) {
 
-
-		if(count2==4)
-			task_takeSemaphore(&semaphore);
-//			task_restart(2);
-//			task_deleteSelf();
-//			task_enableHighestPriority();
-//			task_pause(1);
-		if(count2==8)
-			task_giveSemaphore(&semaphore);
-//			task_resume(1);
-//			task_disableHighestPriority();
-
-		task_delay(1000);
-	}
+    }
 }
 
-void init() {
-	printf("Initiating....\n");
-
-	semaphore = task_createSemaphore(TASK_SEMAPHORE_MUTEX);
-
-	task_init();
-	task_add(1, task1, 1024);
-	task_add(2, task2, 2024);
-
-	task_startScheduler();
-
-	printf("I am here\n");
+void SVC_Handler(void) {
+    StaticThread.SVCHandler();
 }
 
-void loop() {
+void PendSV_Handler(void) {
+    StaticThread.PendSVHandler();
+}
 
+//int tick = 0;
+void SysTick_Handler(void) {
+    HAL_IncTick();
+//	tick++;
+//	if(tick==10){
+    StaticThread.SysTickHandler();
+//		tick= 0;
+//	}
+}
+
+///////////////////////////THREAD/////////////////////////
+#define STACK_SIZE 256
+
+int id1, id2, id3;
+
+uint32_t stack1[STACK_SIZE];
+uint32_t stack2[STACK_SIZE];
+uint32_t stack3[STACK_SIZE];
+
+volatile int count = 0;
+struct {
+    char name[8];
+    int price;
+} fruit;
+
+_Noreturn static void task1(int argLen, void **args) {
+    StaticThread.print("%s(INIT) : %d-%p\n", __func__, argLen, args);
+    while (1) {
+        StaticThread.mutexLock();
+        strcpy(fruit.name, "Apple\0");
+        StaticThread.delay(1000);
+        fruit.price = 10;
+        StaticThread.print("%s : %d\n", fruit.name, fruit.price);
+        StaticThread.mutexUnlock();
+        StaticThread.delay(10);
+    }
+}
+
+_Noreturn static void task2(int argLen, void **args) {
+    StaticThread.print("%s(INIT) : %d-%p\n", __func__, argLen, args);
+    while (1) {
+        StaticThread.mutexLock();
+        strcpy(fruit.name, "Mango\0");
+        StaticThread.delay(1000);
+        fruit.price = 20;
+        StaticThread.print("%s : %d\n", fruit.name, fruit.price);
+        StaticThread.mutexUnlock();
+        StaticThread.delay(10);
+    }
+}
+
+_Noreturn static void monitoringTask(int argLen, void **args) {
+    StaticThread.print("%s(INIT) : %d-%p\n", __func__, argLen, args);
+    while (1) {
+        StaticThread.print("UF : %d\n",
+                           (int) (100 * StaticThread.utilization()));
+        StaticThread.print("%s : %d\n", fruit.name, fruit.price);
+        StaticThread.delay(1000);
+    }
+}
+
+void run() {
+    printf("Initiating....\n");
+    HAL_Delay(1000);
+
+    id1 = StaticThread.new(task1, stack1, sizeof(stack1) / sizeof(uint32_t), 0, NULL);
+    id2 = StaticThread.new(task2, stack2, sizeof(stack2) / sizeof(uint32_t), 0, NULL);
+    id3 = StaticThread.new(monitoringTask, stack3, sizeof(stack3) / sizeof(uint32_t), 0, NULL);
+    StaticThread.startScheduler();
 }
 ```
-#Outputs
+# Outputs
 ```rb
 Initiating....
-TASK|task_add> INFO : Handler 0x8002601 is added successfully with id 1.
-TASK|task_add> INFO : Handler 0x8002639 is added successfully with id 2.
-Task1 starting
-I am task1
-Task2 starting
-I am task2 0
-I am task1
-I am task1
-I am task2 1
-I am task1
-I am task1
-I am task2 2
-I am task1
-I am task1
-I am task2 3
-TASK|task_takeSemaphore> INFO : Handler 0x8002639 associated with id 2 took semaphore.
-I am task2 4
-I am task2 5
-I am task2 6
-I am task2 7
-TASK|task_giveSemaphore> INFO : Handler 0x8002639 associated with id 2 gave semaphore of handler 0x8002639.
-I am task1
-I am task1
-I am task2 8
-I am task1
-I am task1
-I am task2 9
-I am task1
-I am task1
-I am task2 10
-I am task1
+task1(INIT): 0-0
+Apple : 10
+task2(INIT): 0-0
+Mango : 20
+monitoringTsk(INIT) : -0
+UF : 100
+Mango : 20
+Apple : 10
+Mango : 20
+UF : 100
+Mago : 20
+Apple : 10
+Mango : 20
+UF : 100
+Mago : 20
+Apple : 10
+Mango : 20
+UF : 100
+Mago : 20
+Apple : 10
+Mango : 20
+UF : 100
 ```
