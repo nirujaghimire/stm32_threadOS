@@ -21,24 +21,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e65c7c7-17fa-493a-a3eb-7db5e750930e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/readme/example1.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme/example2.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme/example3.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme/example3_list_file.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme/example3_output.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.cproject" beforeDir="false" afterPath="$PROJECT_DIR$/.cproject" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/stm32_thread_OS/stm32_thread_OS.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/stm32_thread_OS/stm32_thread_OS.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/stm32_thread_OS/stm32_thread_OS.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/stm32_thread_OS/stm32_thread_OS.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/stm32_thread_OS/stm32_thread_OS_test.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/stm32_thread_OS/stm32_thread_OS_test.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Debug/makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/sources.mk" beforeDir="false" afterPath="$PROJECT_DIR$/Debug/sources.mk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/stm32_threadOS.elf" beforeDir="false" afterPath="$PROJECT_DIR$/Debug/stm32_threadOS.elf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/stm32_threadOS.hex" beforeDir="false" afterPath="$PROJECT_DIR$/Debug/stm32_threadOS.hex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/stm32_threadOS.list" beforeDir="false" afterPath="$PROJECT_DIR$/Debug/stm32_threadOS.list" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/stm32_threadOS.map" beforeDir="false" afterPath="$PROJECT_DIR$/Debug/stm32_threadOS.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +128,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1712776094020</updated>
-      <workItem from="1712776098278" duration="3526000" />
+      <workItem from="1712776098278" duration="3571000" />
     </task>
     <servers />
   </component>
