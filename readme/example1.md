@@ -1,31 +1,4 @@
-# [STM32 Thread OS](https://nirujaghimire.super.site/stm32threados)
-
-→This is library which allow us to run multiple tasks in pseudo parallel in stm32
-
-- Multiple Task can be added anytime with stack size
-- Each task can be
-    - Restart in any time. Self restart is also possible
-    - Pause in any time. Self pause is also possible
-    - Resumed any time
-    - Deleted in any time. Self delete is also possible
-- Task delay which does not consume the clock
-- Dynamic stack
-- Task Semaphore
-- Mutex Lock (It locks all other tasks)
-- Thread spin (It switches the task while waiting)
-- Track CPU utilization
-- Track Peak Stack Utilization
-- Function Synchronisation so that only one task can call function at a time
-- Stack tracing specially for the hard fault
-
-# Examples
-
-- [Basic](readme/example1.md)
-- [Mutex, Synchronise, CPU Utilization, Stack Utilization](readme/example2.md)
-- [Stack tracing during hard fault](readme/example3.md)
-
 # Code
-
 ```c
 /*
  * stm32_thread_OS_test.c
@@ -97,10 +70,10 @@ void run() {
 	id2 = StaticThread.new(thread2, thread2Stack, sizeof(thread2Stack) / sizeof(uint32_t), 0, NULL);
 	StaticThread.startScheduler();
 }
+
 ```
 
 # Outputs
-
 ```text
 Initiating...
 thread1(INIT) : 0-0
