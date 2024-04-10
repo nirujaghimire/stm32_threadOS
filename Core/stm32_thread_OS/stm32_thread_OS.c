@@ -404,18 +404,18 @@ static float stackUtilization(int threadID){
 		threadID = currentThread;
 	if(threadID>=MAX_THREAD){
 		mutexLock = 0;
-		return -1.0;
+		return -1.0f;
 	}
 	STM32Thread t = thread[threadID];
 	if(t.ID==0){
 		mutexLock = 0;
-		return -1.0;
+		return -1.0f;
 	}
-	int peakLen;
+	int peakLen=0;
 	for(int i=0;i<t.stackLen;i++){
 		if(t.stack[i]==0)
 			continue;
-		peakLen = t.stackLen-i;
+		peakLen = (int)t.stackLen-i;
 		break;
 	}
 	float uf = (float)peakLen/(float)t.stackLen;
@@ -461,15 +461,17 @@ static void printStack(int threadID,int isFromHandler){
 		printf("Thread ID doesn't exist\n");
 		return;
 	}
-	if(threadID!=0 && thread[threadID].ID==0){
-		printf("Empty thread\n");
-		return;
+	if(threadID!=0 && threadID!=-1){
+        if( thread[threadID].ID==0) {
+            printf("Empty thread\n");
+            return;
+        }
 	}
 	int ID = threadID;
 	if(threadID==0 || threadID==-1)
 		ID = currentThread;
 
-	uint32_t PSP = thread[threadID].SP;
+	uint32_t PSP = thread[ID].SP;
 	if(isFromHandler){
 		__asm volatile("MRS R0, PSP");
 		__asm volatile("MOV %0,R0":"=r"(PSP));
@@ -477,7 +479,7 @@ static void printStack(int threadID,int isFromHandler){
 
 	STM32Thread t = thread[ID];
 	printf("ID : %d\tPSP : 0x%x\n",ID,(int)PSP);
-	int ptr = (int)(PSP-((uint32_t)t.stack))/sizeof(uint32_t);
+	int ptr = (int)((PSP-((uint32_t)t.stack))/sizeof(uint32_t));
 	for(int i=ptr; i<t.stackLen; i++)
 		printf("%4d: 0x%x: 0x%x\n",i,(int)(&t.stack[i]),(int)t.stack[i]);
 
@@ -491,7 +493,7 @@ static void printStack(int threadID,int isFromHandler){
 				continue;//empty thread
 			PSP = t.SP;
 			printf("ID : %d\tPSP : 0x%x\n",t.ID,(int)PSP);
-			int ptr = (int)(PSP-((uint32_t)t.stack))/sizeof(uint32_t);
+			ptr = (int)((PSP-((uint32_t)t.stack))/sizeof(uint32_t));
 			for(int i=ptr; i<t.stackLen; i++)
 				printf("%4d: 0x%x: 0x%x\n",i,(int)(&t.stack[i]),(int)t.stack[i]);
 		}
