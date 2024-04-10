@@ -19,111 +19,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0e22908-9196-4b21-975e-1476886a323f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Src/main.cyclo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Src/main.d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Src/main.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Src/main.su" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Src/stm32f1xx_hal_msp.cyclo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Src/stm32f1xx_hal_msp.d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Src/stm32f1xx_hal_msp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Src/stm32f1xx_hal_msp.su" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Src/stm32f1xx_it.cyclo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Src/stm32f1xx_it.d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Src/stm32f1xx_it.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Src/stm32f1xx_it.su" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Src/subdir.mk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Src/syscalls.cyclo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Src/syscalls.d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Src/syscalls.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Src/syscalls.su" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Src/sysmem.cyclo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Src/sysmem.d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Src/sysmem.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Src/sysmem.su" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Src/system_stm32f1xx.cyclo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Src/system_stm32f1xx.d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Src/system_stm32f1xx.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Src/system_stm32f1xx.su" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Startup/startup_stm32f103c8tx.d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Startup/startup_stm32f103c8tx.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/Startup/subdir.mk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/stm32_thread_OS/stm32_thread_OS.cyclo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/stm32_thread_OS/stm32_thread_OS.d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/stm32_thread_OS/stm32_thread_OS.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/stm32_thread_OS/stm32_thread_OS.su" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/stm32_thread_OS/stm32_thread_OS_test.cyclo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/stm32_thread_OS/stm32_thread_OS_test.d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/stm32_thread_OS/stm32_thread_OS_test.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/stm32_thread_OS/stm32_thread_OS_test.su" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Core/stm32_thread_OS/subdir.mk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.cyclo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.su" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.cyclo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.su" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.cyclo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.su" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.cyclo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.su" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.cyclo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.su" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.cyclo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.su" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.cyclo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.su" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.cyclo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.su" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.cyclo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.su" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.cyclo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.su" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.cyclo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.su" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.cyclo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.su" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.cyclo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.su" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.cyclo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.su" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/Drivers/STM32F1xx_HAL_Driver/Src/subdir.mk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/objects.list" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/objects.mk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/sources.mk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/stm32_threadOS.elf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/stm32_threadOS.hex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/stm32_threadOS.list" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/stm32_threadOS.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platformio.ini" beforeDir="false" afterPath="$PROJECT_DIR$/platformio.ini" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,7 +121,7 @@
       <updated>1712735258800</updated>
       <workItem from="1712735260010" duration="460000" />
       <workItem from="1712735723828" duration="74000" />
-      <workItem from="1712763747554" duration="113000" />
+      <workItem from="1712763747554" duration="162000" />
     </task>
     <servers />
   </component>
