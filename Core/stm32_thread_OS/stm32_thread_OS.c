@@ -399,6 +399,26 @@ static void spin(){
 	reschedule();
 }
 
+
+/**
+ * It is generaklly be called only from hardfault for stack tracing
+ * @param threadID : threadID
+ * 				   : 0 for hardfault causing thread
+ * 				   : -1 for print all thread stack
+ */
+static void printStack(int threadID){
+	uint32_t PSP;
+	__asm volatile("MRS R0, PSP");
+	__asm volatile("MOV %0,R0":"=r"(PSP));
+	printf("ID : %d\tPSP : 0x%x\n",currentThread,(int)PSP);
+
+	STM32Thread t = thread[currentThread];
+	int ptr = (int)(PSP-(uint32_t)t.sp)/sizeof(uint32_t);
+	for(int i=ptr; i<t.stackLen; i++){
+		printf("0x%x : 0x%x\n",(int)(&t.stack[i]),(int)t.stack[i]);
+	}
+}
+
 struct STM32ThreadControl StaticThread = {
 		.new = new,
 		.startScheduler = startScheduler,
@@ -408,12 +428,14 @@ struct STM32ThreadControl StaticThread = {
 		.unblock = threadUnblock,
 		.delay = threadDelay,
 		.print = threadPrint,
+		.print = threadPrint,
 		.mutexLock = threadMutexLock,
 		.mutexUnlock = threadMutexUnlock,
 		.takeBinarySemaphore = threadTakeBinarySemaphore,
 		.giveBinarySemaphore = threadGiveBinarySemaphore,
 		.utilization = utilization,
 		.spin = spin,
+		.printStack = printStack,
 
 		.SVCHandler = threadSVCHandler,
 		.SysTickHandler = threadSysTickHandler,

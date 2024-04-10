@@ -10,7 +10,7 @@
 
 #include "stdint.h"
 
-#define MAX_THREAD 5
+#define MAX_THREAD 10
 
 
 struct STM32ThreadControl{
@@ -100,6 +100,15 @@ struct STM32ThreadControl{
 	 * It is should be called during waiting in while loop
 	 */
 	void (*spin)();
+
+	/**
+	 * It is generaklly be called only from hardfault for stack tracing
+	 * @param threadID : threadID
+	 * 				   : 0 for hardfault causing thread
+	 * 				   : -1 for print all thread stack
+	 */
+	void (*printStack)(int threadID);
+
 
 	//////////////////////HANDLER//////////////////////////
 	/**
