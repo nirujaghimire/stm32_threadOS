@@ -5,3 +5,5 @@
 Debug/Core
 Debug/Drivers
 cmake-build-debug
+CMakeLists.txt
+CMakeLists_template.txt
