@@ -56,6 +56,9 @@ stm32_threadOS.list \
 OBJCOPY_HEX += \
 stm32_threadOS.hex \
 
+OBJCOPY_BIN += \
+stm32_threadOS.bin \
+
 
 # All Target
 all: main-build
@@ -84,12 +87,17 @@ stm32_threadOS.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
+stm32_threadOS.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "stm32_threadOS.bin"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 # Other Targets
 clean:
-	-$(RM) default.size.stdout stm32_threadOS.elf stm32_threadOS.hex stm32_threadOS.list stm32_threadOS.map
+	-$(RM) default.size.stdout stm32_threadOS.bin stm32_threadOS.elf stm32_threadOS.hex stm32_threadOS.list stm32_threadOS.map
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX) $(OBJCOPY_BIN)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'

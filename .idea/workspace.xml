@@ -3,23 +3,42 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
-  <component name="CMakePresetLoader">{
-  &quot;useNewFormat&quot;: true
-}</component>
+  <component name="CMakePresetLoader"><![CDATA[{
+  "useNewFormat": true
+}]]></component>
   <component name="CMakeReloadState">
     <option name="reloaded" value="true" />
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
-      <config projectName="stm32_threadOS" targetName="PlatformIO" />
+      <config projectName="Project" targetName="PlatformIO" />
     </generated>
   </component>
   <component name="CMakeSettings">
-    <configurations />
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d0e22908-9196-4b21-975e-1476886a323f" name="Changes" comment="">
+    <list default="true" id="4e65c7c7-17fa-493a-a3eb-7db5e750930e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/readme/example1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme/example2.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme/example3.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme/example3_list_file.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme/example3_output.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cproject" beforeDir="false" afterPath="$PROJECT_DIR$/.cproject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/stm32_thread_OS/stm32_thread_OS.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/stm32_thread_OS/stm32_thread_OS.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/stm32_thread_OS/stm32_thread_OS.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/stm32_thread_OS/stm32_thread_OS.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/stm32_thread_OS/stm32_thread_OS_test.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/stm32_thread_OS/stm32_thread_OS_test.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Debug/makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/sources.mk" beforeDir="false" afterPath="$PROJECT_DIR$/Debug/sources.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/stm32_threadOS.elf" beforeDir="false" afterPath="$PROJECT_DIR$/Debug/stm32_threadOS.elf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/stm32_threadOS.hex" beforeDir="false" afterPath="$PROJECT_DIR$/Debug/stm32_threadOS.hex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/stm32_threadOS.list" beforeDir="false" afterPath="$PROJECT_DIR$/Debug/stm32_threadOS.list" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/stm32_threadOS.map" beforeDir="false" afterPath="$PROJECT_DIR$/Debug/stm32_threadOS.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,36 +90,43 @@
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
     <option name="majorVersion" value="2023" />
-    <option name="minorVersion" value="3.3" />
+    <option name="minorVersion" value="3.4" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 1
-}</component>
-  <component name="ProjectId" id="2etsYeLxAJ6scNjAwykmNpfFHbH" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2evDK9XeSQtxsSCfMg2Ru0ou95V" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;peter&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Peter/Desktop/Github/stm32_threadOS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;CMakeSettings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "peter",
+    "last_opened_file_path": "C:/Users/Peter/Desktop/Github/stm32_threadOS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Peter\Desktop\Github\stm32_threadOS" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Peter\Desktop\Github\stm32_threadOS\readme" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
@@ -114,14 +140,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d0e22908-9196-4b21-975e-1476886a323f" name="Changes" comment="" />
-      <created>1712735258800</created>
+      <changelist id="4e65c7c7-17fa-493a-a3eb-7db5e750930e" name="Changes" comment="" />
+      <created>1712776094020</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1712735258800</updated>
-      <workItem from="1712735260010" duration="460000" />
-      <workItem from="1712735723828" duration="74000" />
-      <workItem from="1712763747554" duration="162000" />
+      <updated>1712776094020</updated>
+      <workItem from="1712776098278" duration="3526000" />
     </task>
     <servers />
   </component>

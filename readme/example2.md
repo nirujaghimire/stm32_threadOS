@@ -1,3 +1,5 @@
+# Code
+```c
 /*
  * stm32_thread_OS_test.c
  *
@@ -119,3 +121,95 @@ void run() {
 	id3 = StaticThread.new(monitoringthread, monitoringThreadStack, sizeof(monitoringThreadStack) / sizeof(uint32_t), 0, NULL);
 	StaticThread.startScheduler();
 }
+
+```
+# Outputs Before use of Synchronise or Mutex
+```text
+Initiating...
+thread1(INIT) : 0-0
+thread2(INIT) : 0-0
+monitoringthread(INIT) : 0-0
+thread2: Fruit: Mpple : 20
+thread1: Fruit: Mpple : 10
+thread2: Fruit: Applo : 20
+thread1: Fruit: Mange : 10
+thread2: Fruit: Apngo : 20
+thread1: Fruit: Mango : 10
+thread2: Fruit: Mango : 20
+thread2: Fruit: Mango : 10
+thread1: Fruit: Mango : 10
+thread2: Fruit: Apple : 20
+thread1: Fruit: Maple : 10
+
+CPU UF : 9
+1: STACK UF: 57
+2: STACK UF: 50
+3: STACK UF: 51
+thread2: Fruit: Appgo : 20
+thread1: Fruit: Mango : 10
+thread2: Fruit: Aango : 20
+thread1: Fruit: Mango : 20
+thread2: Fruit: Mango : 20
+thread2: Fruit: Maple : 20
+thread1: Fruit: Maple : 10
+thread2: Fruit: Apple : 20
+thread1: Fruit: Manle : 10
+thread2: Fruit: Appgo : 20
+thread1: Fruit: Mango : 10
+```
+
+# Outputs After use of Mutex
+```text
+Initiating...
+thread1(INIT) : 0-0
+thread1: Fruit: Apple : 10
+thread2(INIT) : 0-0
+thread2: Fruit: Mango : 20
+monitoringthread(INIT) : 0-0
+thread1: Fruit: Apple : 10
+thread2: Fruit: Mango : 20
+thread1: Fruit: Apple : 10
+thread2: Fruit: Mango : 20
+thread1: Fruit: Apple : 10
+thread2: Fruit: Mango : 20
+thread1: Fruit: Apple : 10
+thread2: Fruit: Mango : 20
+
+CPU UF : 100
+1: STACK UF: 57
+2: STACK UF: 50
+3: STACK UF: 51
+thread1: Fruit: Apple : 10
+thread2: Fruit: Mango : 20
+thread1: Fruit: Apple : 10
+thread2: Fruit: Mango : 20
+thread1: Fruit: Apple : 10
+thread2: Fruit: Mango : 20
+thread1: Fruit: Apple : 10
+thread2: Fruit: Mango : 20
+```
+
+# Outputs After use of Synchronise
+```text
+thread1(INIT) : 0-0
+thread2(INIT) : 0-0
+monitoringthread(INIT) : 0-0
+thread1: Fruit: Apple : 10
+thread2: Fruit: Mango : 20
+thread1: Fruit: Apple : 10
+thread2: Fruit: Mango : 20
+thread1: Fruit: Apple : 10
+thread2: Fruit: Mango : 20
+
+CPU UF : 81
+1: STACK UF: 57
+2: STACK UF: 50
+3: STACK UF: 51
+thread1: Fruit: Apple : 10
+thread2: Fruit: Mango : 20
+thread1: Fruit: Apple : 10
+thread2: Fruit: Mango : 20
+thread1: Fruit: Apple : 10
+thread2: Fruit: Mango : 20
+thread1: Fruit: Apple : 10
+```

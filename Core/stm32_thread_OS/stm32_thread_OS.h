@@ -10,7 +10,7 @@
 
 #include "stdint.h"
 
-#define MAX_THREAD 10
+#define MAX_THREAD 11
 
 
 struct STM32ThreadControl{
@@ -92,9 +92,18 @@ struct STM32ThreadControl{
 	void (*giveBinarySemaphore)(int threadID);
 
 	/**
-	 * It gives the utilization factor (0~1)
+	 * It gives the CPU utilization factor (0~1)
 	 */
-	float (*utilization)();
+	float (*cpuUtilization)();
+
+	/**
+	 * It gives the stack utilization factor (0~1) all the value of stack should be 0 initially
+	 * @param threadID 	: ID of thread
+	 * 					: 0 for self stack utilization
+	 * return			: stack utilization factor (0~1)
+	 * 					: -1 if threadID doesn't exist
+	 */
+	float (*stackUtilization)(int threadID);
 
 	/**
 	 * It is should be called during waiting in while loop
@@ -102,13 +111,28 @@ struct STM32ThreadControl{
 	void (*spin)();
 
 	/**
-	 * It is generaklly be called only from hardfault for stack tracing
-	 * @param threadID : threadID
-	 * 				   : 0 for hardfault causing thread
-	 * 				   : -1 for print all thread stack
+	 * This will make sure the function containing this can be called by only one task
+	 * This doesn't block all other tasks like mutex lock
+	 * @param flag : pointer to static or global variable (Should be made 0 initially and at the end of function !!!)
+	 * e.g.
+	 * 	void func(){
+	 * 		static int flag = 0;
+	 * 		StaticThread.synchronise(&flag);
+	 * 		// Do stuff
+	 * 		flag = 0;
+	 * 	}
 	 */
-	void (*printStack)(int threadID);
+	void (*synchronise)(int *flag);
 
+	/**
+	 * It is generally called from hardfault or from handler for stack tracing
+	 * @param threadID 		: threadID
+	 * 				   		: 0 for hardfault causing thread
+	 * 				   		: -1 for print all thread stack of nonempty task
+	 * @param isFromHandler : 1 for calling from handler
+	 * 						: 0 for calling from thread
+	 */
+	void (*printStack)(int threadID,int isFromHandler);
 
 	//////////////////////HANDLER//////////////////////////
 	/**

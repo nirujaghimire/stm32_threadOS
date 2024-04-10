@@ -21,7 +21,7 @@ typedef struct {
 	uint8_t ID;
 	uint32_t *stack;
 	uint32_t stackLen;
-	uint32_t sp;
+	uint32_t SP;
 	STM32ThreadAction action;
 	void (*threadFunc)(int argLen,void**args);
 	uint32_t waitTill;
@@ -81,7 +81,7 @@ static void addThread(int freeIndex, void (*threadTask)(), uint32_t *stack,
 	*(--psp) = 0x06060606u; // Dummy R6
 	*(--psp) = 0x05050505u; // Dummy R5
 	*(--psp) = 0x04040404u; // Dummy R4
-	thread[i].sp = (uint32_t) psp;
+	thread[i].SP = (uint32_t) psp;
 }
 
 /**
@@ -116,7 +116,6 @@ static void startScheduler() {
 			sizeof(idleThreadStack) / sizeof(uint32_t),0,NULL);
 	NVIC_SetPriority(PendSV_IRQn, 0xFF);
 
-
 	currentThread = 0;
 	for(int i=1;i<MAX_THREAD;i++){
 		if(thread[i].ID!=0){
@@ -125,9 +124,9 @@ static void startScheduler() {
 		}
 	}
 
-	uint32_t sp = thread[currentThread].sp;
+	uint32_t SP = thread[currentThread].SP;
 
-	__asm volatile("MOV R0, %0"::"r"(sp));
+	__asm volatile("MOV R0, %0"::"r"(SP));
 	__asm volatile("MSR PSP, R0");
 
 	//Stack to PSP
@@ -144,7 +143,7 @@ static void startScheduler() {
 			"MSR CONTROL, r0"
 	);
 
-	void (*task)(int argLen,void**args) = (void (*)(int argLen,void**args))((uint32_t*)sp)[14];
+	void (*task)(int argLen,void**args) = (void (*)(int argLen,void**args))((uint32_t*)SP)[14];
 	task(thread[currentThread].argLen,thread[currentThread].args);
 }
 
@@ -211,7 +210,7 @@ __attribute__((naked)) void threadPendSVHandler() {
 	// save R4 to R11 to PSP Frame Stack
 	__asm volatile("STMDB R0!, {R4-R11}");
 	// save current value of PSP
-	__asm volatile("MOV %0, R0":"=r"(thread[currentThread].sp));
+	__asm volatile("MOV %0, R0":"=r"(thread[currentThread].SP));
 
 	/* Scheduling */
 	threadSwitching();
@@ -219,7 +218,7 @@ __attribute__((naked)) void threadPendSVHandler() {
 	/* Retrieve the context of next task */
 
 	// get its past PSP value
-	__asm volatile("MOV R0, %0"::"r"(thread[currentThread].sp));
+	__asm volatile("MOV R0, %0"::"r"(thread[currentThread].SP));
 	// retrieve R4-R11 from PSP Fram Stack
 	__asm volatile("LDMIA R0!, {R4-R11}");
 	// update PSP
@@ -376,9 +375,9 @@ static void threadGiveBinarySemaphore(int threadID){
 }
 
 /**
- * It gives the utilization factor (0~1)
+ * It gives the CPU utilization factor (0~1)
  */
-static float utilization(){
+static float cpuUtilization(){
 	mutexLock = 1;
 	uint32_t totalTime = thread[0].timeTillNow;
 	for(int i=1;i<MAX_THREAD;i++){
@@ -393,29 +392,109 @@ static float utilization(){
 
 
 /**
+ * It gives the stack utilization factor (0~1) all the value of stack should be 0 initially
+ * @param threadID 	: ID of thread
+ * 					: 0 for self stack utilization
+ * return			: stack utilization factor (0~1)
+ * 					: -1 if threadID doesn't exist
+ */
+static float stackUtilization(int threadID){
+	mutexLock = 1;
+	if(threadID==0)
+		threadID = currentThread;
+	if(threadID>=MAX_THREAD){
+		mutexLock = 0;
+		return -1.0;
+	}
+	STM32Thread t = thread[threadID];
+	if(t.ID==0){
+		mutexLock = 0;
+		return -1.0;
+	}
+	int peakLen;
+	for(int i=0;i<t.stackLen;i++){
+		if(t.stack[i]==0)
+			continue;
+		peakLen = t.stackLen-i;
+		break;
+	}
+	float uf = (float)peakLen/(float)t.stackLen;
+	mutexLock = 0;
+	return uf;
+}
+
+/**
  * It is should be called during waiting in while loop
  */
 static void spin(){
 	reschedule();
 }
 
+/**
+ * This will make sure the function containing this can be called by only one task
+ * This doesn't block all other tasks like mutex lock
+ * @param flag : pointer to static or global variable (Should be made 0 initially and at the end of function !!!)
+ * e.g.
+ * 	void func(){
+ * 		static int flag = 0;
+ * 		StaticThread.synchronise(&flag);
+ * 		// Do stuff
+ * 		flag = 0;
+ * 	}
+ */
+static void synchronise(int *flag){
+	while((*flag)!=0) StaticThread.spin();
+	*flag = 1;
+}
+
 
 /**
- * It is generaklly be called only from hardfault for stack tracing
- * @param threadID : threadID
- * 				   : 0 for hardfault causing thread
- * 				   : -1 for print all thread stack
+ * It is generally called from hardfault or from handler for stack tracing
+ * @param threadID 		: threadID
+ * 				   		: 0 for hardfault causing thread
+ * 				   		: -1 for print all thread stack of nonempty task
+ * @param isFromHandler : 1 for calling from handler
+ * 						: 0 for calling from thread
  */
-static void printStack(int threadID){
-	uint32_t PSP;
-	__asm volatile("MRS R0, PSP");
-	__asm volatile("MOV %0,R0":"=r"(PSP));
-	printf("ID : %d\tPSP : 0x%x\n",currentThread,(int)PSP);
+static void printStack(int threadID,int isFromHandler){
+	if(threadID>=MAX_THREAD || threadID<-1){
+		printf("Thread ID doesn't exist\n");
+		return;
+	}
+	if(threadID!=0 && thread[threadID].ID==0){
+		printf("Empty thread\n");
+		return;
+	}
+	int ID = threadID;
+	if(threadID==0 || threadID==-1)
+		ID = currentThread;
 
-	STM32Thread t = thread[currentThread];
-	int ptr = (int)(PSP-(uint32_t)t.sp)/sizeof(uint32_t);
-	for(int i=ptr; i<t.stackLen; i++){
-		printf("0x%x : 0x%x\n",(int)(&t.stack[i]),(int)t.stack[i]);
+	uint32_t PSP = thread[threadID].SP;
+	if(isFromHandler){
+		__asm volatile("MRS R0, PSP");
+		__asm volatile("MOV %0,R0":"=r"(PSP));
+	}
+
+	STM32Thread t = thread[ID];
+	printf("ID : %d\tPSP : 0x%x\n",ID,(int)PSP);
+	int ptr = (int)(PSP-((uint32_t)t.stack))/sizeof(uint32_t);
+	for(int i=ptr; i<t.stackLen; i++)
+		printf("%4d: 0x%x: 0x%x\n",i,(int)(&t.stack[i]),(int)t.stack[i]);
+
+
+	if(threadID== -1){
+		for(int n=1;n<MAX_THREAD;n++){
+			if(n==currentThread)
+				continue;//Above thread already printed
+			t = thread[n];
+			if(t.ID==0)
+				continue;//empty thread
+			PSP = t.SP;
+			printf("ID : %d\tPSP : 0x%x\n",t.ID,(int)PSP);
+			int ptr = (int)(PSP-((uint32_t)t.stack))/sizeof(uint32_t);
+			for(int i=ptr; i<t.stackLen; i++)
+				printf("%4d: 0x%x: 0x%x\n",i,(int)(&t.stack[i]),(int)t.stack[i]);
+		}
 	}
 }
 
@@ -433,8 +512,10 @@ struct STM32ThreadControl StaticThread = {
 		.mutexUnlock = threadMutexUnlock,
 		.takeBinarySemaphore = threadTakeBinarySemaphore,
 		.giveBinarySemaphore = threadGiveBinarySemaphore,
-		.utilization = utilization,
+		.cpuUtilization = cpuUtilization,
+		.stackUtilization = stackUtilization,
 		.spin = spin,
+		.synchronise = synchronise,
 		.printStack = printStack,
 
 		.SVCHandler = threadSVCHandler,

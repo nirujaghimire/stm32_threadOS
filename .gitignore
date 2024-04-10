@@ -2,6 +2,5 @@
 .settings
 .vscode
 .idea
-Debug/*
-!*/stm32_threadOS.hex
-!*/stm32_threadOS.list
+Debug/Core
+Debug/Drivers
