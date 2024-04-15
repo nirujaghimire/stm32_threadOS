@@ -44,6 +44,7 @@ int id1, id2, id3;
 
 uint32_t thread1Stack[STACK_SIZE];
 uint32_t thread2Stack[STACK_SIZE];
+uint32_t thread3Stack[STACK_SIZE];
 uint32_t monitoringThreadStack[STACK_SIZE];
 
 typedef struct {
@@ -100,12 +101,21 @@ static void thread2(int argLen, void **args) {
 	}
 }
 
+static void thread3(int argLen, void **args) {
+	StaticThread.print("%s(INIT) : %d-%p\n", __func__, argLen, args);
+	while (1) {
+		change(0);
+		StaticThread.print("%s: Fruit: %s : %d\n", __func__, fruit.name, fruit.price);
+		StaticThread.delay(333);
+	}
+}
+
 static void monitoringthread(int argLen, void **args) {
 	StaticThread.print("%s(INIT) : %d-%p\n", __func__, argLen, args);
 	while (1) {
 		StaticThread.delay(10000);
 		StaticThread.print("\nCPU UF : %d\n", (int) (100 * StaticThread.cpuUtilization()));
-		for (int id = 1; id <= 3; id++)
+		for (int id = 1; id <= 4; id++)
 			StaticThread.print("%d: STACK UF: %d\n", id, (int) (100 * StaticThread.stackUtilization(id)));
 	}
 }
@@ -116,6 +126,7 @@ void run() {
 
 	id1 = StaticThread.new(thread1, thread1Stack, sizeof(thread1Stack) / sizeof(uint32_t), 0, NULL);
 	id2 = StaticThread.new(thread2, thread2Stack, sizeof(thread2Stack) / sizeof(uint32_t), 0, NULL);
+	id2 = StaticThread.new(thread3, thread3Stack, sizeof(thread3Stack) / sizeof(uint32_t), 0, NULL);
 	id3 = StaticThread.new(monitoringthread, monitoringThreadStack, sizeof(monitoringThreadStack) / sizeof(uint32_t), 0, NULL);
 	StaticThread.startScheduler();
 }
