@@ -10,6 +10,8 @@
 #include "stdio.h"
 #include "stdarg.h"
 
+#define STACK_OFFSET 32
+
 typedef enum {
 	STM32_THREAD_ACTION_BLOCK = 0,
 	STM32_THREAD_ACTION_RUNNING,
@@ -38,7 +40,7 @@ static volatile uint8_t userMutexLock = 0;
 static volatile uint32_t taskTime = 0;
 
 
-static uint32_t idleThreadStack[64];
+static uint32_t idleThreadStack[64+STACK_OFFSET];
 uint32_t stm32_thread_idle_count;
 static void idleThread() {
 	stm32_thread_idle_count = 0;
@@ -61,7 +63,7 @@ static void addThread(int freeIndex, void (*threadTask)(), uint32_t *stack,
 	thread[i].timeTillNow = 0;
 
 
-	uint32_t *psp = (uint32_t*) &stack[stackLen];
+	uint32_t *psp = (uint32_t*) &stack[stackLen-STACK_OFFSET];
 
 	// fill dummy stack frame
 	*(--psp) = 0x01000000u; // Dummy xPSR, just enable Thumb State bit;
