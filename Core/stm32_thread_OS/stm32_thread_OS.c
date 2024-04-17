@@ -49,14 +49,13 @@ static void idleThread() {
 	}
 }
 
-static void addThread(int freeIndex, void (*threadTask)(), uint32_t *stack,
-		uint32_t stackLen,int argLen,void**args) {
+static void addThread(int freeIndex, void (*threadFunc)(int argLen,void**args), uint32_t *stack,uint32_t stackLen,int argLen,void**args) {
 	int i = freeIndex;
 	//Empty thread found
 	thread[i].ID = freeIndex;
 	thread[i].stack = stack;
 	thread[i].stackLen = stackLen;
-	thread[i].threadFunc = threadTask;
+	thread[i].threadFunc = threadFunc;
 	thread[i].action = STM32_THREAD_ACTION_RUNNING;
 	thread[i].argLen = argLen;
 	thread[i].args = args;
@@ -67,7 +66,7 @@ static void addThread(int freeIndex, void (*threadTask)(), uint32_t *stack,
 
 	// fill dummy stack frame
 	*(--psp) = 0x01000000u; // Dummy xPSR, just enable Thumb State bit;
-	*(--psp) = (uint32_t) threadTask; // PC
+	*(--psp) = (uint32_t) threadFunc; // PC
 	*(--psp) = 0xFFFFFFFDu; // LR with EXC_RETURN to return to Thread using PSP
 	*(--psp) = 0x12121212u; // Dummy R12
 	*(--psp) = 0x03030303u; // Dummy R3
@@ -88,7 +87,7 @@ static void addThread(int freeIndex, void (*threadTask)(), uint32_t *stack,
 
 /**
  * This adds the thread
- * @param threadTask	: Infinite function for thread  (!!! should be infinite running)
+ * @param threadFunc	: Infinite function for thread  (!!! should be infinite running)
  * @param stack			: Pointer to stack array
  * @param stackLen		: Length of stack array
  * @param argLen		: Length of arguments
@@ -96,7 +95,7 @@ static void addThread(int freeIndex, void (*threadTask)(), uint32_t *stack,
  * @return				: ID of created thread (This ID is required for restart or delete of thread)
  * 						: -1 if MAX_THREAD limit exceeds
  */
-static int new(void (*threadTask)(int argLen,void**args), uint32_t *stack, uint32_t stackLen,int argLen,void**args) {
+static int new(void (*threadFunc)(int argLen,void**args), uint32_t *stack, uint32_t stackLen,int argLen,void**args) {
 	mutexLock = 1;
 	int freeIndex = 1;
 	for (; freeIndex < MAX_THREAD; freeIndex++)
@@ -104,7 +103,7 @@ static int new(void (*threadTask)(int argLen,void**args), uint32_t *stack, uint3
 			break; //empty thread found
 	if (freeIndex >= MAX_THREAD)
 		return -1;
-	addThread(freeIndex, threadTask, stack, stackLen,argLen,args);
+	addThread(freeIndex, threadFunc, stack, stackLen,argLen,args);
 	mutexLock = 0;
 	return freeIndex;
 }
