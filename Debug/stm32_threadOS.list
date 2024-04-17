@@ -37,15 +37,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_macro  00017c9e  00000000  00000000  0000fc06  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00009b90  00000000  00000000  000278a4  2**0
+ 17 .debug_line   00009b91  00000000  00000000  000278a4  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00083fad  00000000  00000000  00031434  2**0
+ 18 .debug_str    00083fa2  00000000  00000000  00031435  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  000b53e1  2**0
+ 19 .comment      00000043  00000000  00000000  000b53d7  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00002714  00000000  00000000  000b5424  2**2
+ 20 .debug_frame  00002714  00000000  00000000  000b541c  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 0000005b  00000000  00000000  000b7b38  2**0
+ 21 .debug_line_str 0000005b  00000000  00000000  000b7b30  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -1430,8 +1430,7 @@ static void idleThread() {
 	}
 }
 
-static void addThread(int freeIndex, void (*threadTask)(), uint32_t *stack,
-		uint32_t stackLen,int argLen,void**args) {
+static void addThread(int freeIndex, void (*threadFunc)(int argLen,void**args), uint32_t *stack,uint32_t stackLen,int argLen,void**args) {
  8000a60:	b480      	push	{r7}
  8000a62:	b087      	sub	sp, #28
  8000a64:	af00      	add	r7, sp, #0
@@ -1477,7 +1476,7 @@ static void addThread(int freeIndex, void (*threadTask)(), uint32_t *stack,
  8000aaa:	3308      	adds	r3, #8
  8000aac:	683a      	ldr	r2, [r7, #0]
  8000aae:	601a      	str	r2, [r3, #0]
-	thread[i].threadFunc = threadTask;
+	thread[i].threadFunc = threadFunc;
  8000ab0:	495a      	ldr	r1, [pc, #360]	@ (8000c1c <addThread+0x1bc>)
  8000ab2:	697a      	ldr	r2, [r7, #20]
  8000ab4:	4613      	mov	r3, r2
@@ -1551,7 +1550,7 @@ static void addThread(int freeIndex, void (*threadTask)(), uint32_t *stack,
  8000b2a:	693b      	ldr	r3, [r7, #16]
  8000b2c:	f04f 7280 	mov.w	r2, #16777216	@ 0x1000000
  8000b30:	601a      	str	r2, [r3, #0]
-	*(--psp) = (uint32_t) threadTask; // PC
+	*(--psp) = (uint32_t) threadFunc; // PC
  8000b32:	693b      	ldr	r3, [r7, #16]
  8000b34:	3b04      	subs	r3, #4
  8000b36:	613b      	str	r3, [r7, #16]
@@ -1682,7 +1681,7 @@ static void addThread(int freeIndex, void (*threadTask)(), uint32_t *stack,
  * @return				: ID of created thread (This ID is required for restart or delete of thread)
  * 						: -1 if MAX_THREAD limit exceeds
  */
-static int new(void (*threadTask)(int argLen,void**args), uint32_t *stack, uint32_t stackLen,int argLen,void**args) {
+static int new(void (*threadFunc)(int argLen,void**args), uint32_t *stack, uint32_t stackLen,int argLen,void**args) {
  8000c20:	b580      	push	{r7, lr}
  8000c22:	b088      	sub	sp, #32
  8000c24:	af02      	add	r7, sp, #8
@@ -1728,7 +1727,7 @@ static int new(void (*threadTask)(int argLen,void**args), uint32_t *stack, uint3
 		return -1;
  8000c66:	f04f 33ff 	mov.w	r3, #4294967295
  8000c6a:	e00d      	b.n	8000c88 <new+0x68>
-	addThread(freeIndex, threadTask, stack, stackLen,argLen,args);
+	addThread(freeIndex, threadFunc, stack, stackLen,argLen,args);
  8000c6c:	6a3b      	ldr	r3, [r7, #32]
  8000c6e:	9301      	str	r3, [sp, #4]
  8000c70:	683b      	ldr	r3, [r7, #0]
